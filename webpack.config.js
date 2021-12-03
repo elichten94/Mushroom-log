@@ -3,7 +3,7 @@ const path = require('path');
 
 module.exports = {
 
-  entry: './client/src/index.js',
+  entry: './client/src/index.jsx',
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
@@ -13,6 +13,7 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
+        exclude: /node_modules/,
         use: [
           // [style-loader](/loaders/style-loader)
           { loader: 'style-loader' },
@@ -27,16 +28,22 @@ module.exports = {
           { loader: 'sass-loader' }
         ]
       },
+
       {
-        test: /\.m?js$/,
-        exclude: /(node_modules|bower_components)/,
-        use: {
+        test: /\.(jsx|js)$/,
+
+        exclude: /node_modules/,
+        use: [{
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env'],
-            plugins: ['@babel/plugin-transform-runtime']
+            presets: [
+              ['@babel/preset-env', {
+                "targets": "defaults"
+              }],
+              '@babel/preset-react'
+            ]
           }
-        }
+        }]
       }
 
     ]
