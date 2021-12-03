@@ -13,15 +13,28 @@ module.exports = {
       });
   },
 
-  addOne: function(req, res) {
+  addPlaces: function(req, res) {
     // query database to insert and respond 201 on success
 
-    models.insertOne()
+    models.insertPlace()
       .then(() => {
-        res.status(200).send('added places or species');
+        res.status(200).send('added a species');
       })
       .catch((err) => {
-        console.error('adding places or species');
+        console.error('error adding a species');
+        res.status(400).send(err);
+      });
+  },
+
+  addSpecies: function(req, res) {
+    // query database to insert and respond 201 on success
+
+    models.insertSpecies()
+      .then(() => {
+        res.status(200).send('added place');
+      })
+      .catch((err) => {
+        console.error('error adding place');
         res.status(400).send(err);
       });
   }

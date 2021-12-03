@@ -11,7 +11,10 @@ app.use(express.static('dist'));
 // retreive all observations
 app.get('/observations', controllers.requestAll);
 
-app.post('/observations', controllers.addOne);
+app.post('/places', controllers.addPlaces);
+
+app.post('/species', controllers.addSpecies);
+
 
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
