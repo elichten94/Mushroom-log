@@ -31,10 +31,10 @@ CREATE TABLE species (
 );
 
 CREATE TABLE places_species (
-  places_id INT NOT NULL,
+  place_id INT NOT NULL,
   species_id INT NOT NULL,
 
-  FOREIGN KEY(places_id)
+  FOREIGN KEY(place_id)
     REFERENCES places(id),
   FOREIGN KEY(species_id)
     REFERENCES species(id)
