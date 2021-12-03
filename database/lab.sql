@@ -6,11 +6,11 @@ USE mushroom_log;
 
 START TRANSACTION;
 insert ignore into types (name)
- VALUES ('fungi');
+ VALUES ('animal');
 INSERT INTO species (name, type_id)
   VALUES (
-    'inky caps',
-    (SELECT id FROM types WHERE types.name = 'fungi'));
+    'platypus',
+    (SELECT id FROM types WHERE types.name = 'animal'));
 SET @species_id_to_use = LAST_INSERT_ID();
 INSERT INTO places_species
   VALUES (
@@ -19,5 +19,5 @@ INSERT INTO places_species
 COMMIT;
 
 
-
-select * from places_species;
+select * from species;
+select * from types;
