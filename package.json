@@ -5,7 +5,8 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --mode=development -w"
+    "build": "webpack --mode=development -w",
+    "start": "nodemon ./server/index.js"
   },
   "repository": {
     "type": "git",
@@ -35,7 +36,9 @@
     "@babel/plugin-syntax-jsx": "^7.16.0",
     "@babel/preset-react": "^7.16.0",
     "@babel/runtime": "^7.16.3",
+    "express": "^4.17.1",
     "lodash": "^4.17.21",
+    "mysql2": "^2.3.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   }

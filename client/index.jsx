@@ -4,10 +4,9 @@ import ReactDOM from 'react-dom';
 const App = () => {
   return (
     <div>
-      Henlo world!
+      Henlo world! Pls appear hecc fren
     </div>
   );
 };
 
-ReactDOM.render(<App />, document.getElementById('add'))
-
+ReactDOM.render(<App />, document.getElementById('app'));
