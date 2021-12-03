@@ -17,18 +17,39 @@ module.exports = {
 
   },
 
-  insertPlace: function(reqQParams) {
+  insertPlace: function({ place }) {
     // insert a place to the database
+
+
     var sqlQuery = `
       INSERT INTO places (name)
       VALUES (?)`;
 
-      return pool.query(sqlQuery, [reqQParams.place]);
+      return pool.query(sqlQuery, [place]);
 
   },
 
-  insertSpecies: function() {
+  insertSpecies: function({ type, name, place }) {
     // insert a species to the db
+  // params: type and name
+
+    var sqlQuery = `
+      START TRANSACTION;
+      INSERT IGNORE INTO types (name)
+      VALUES (?);
+      INSERT INTO species (name, type_id)
+        VALUES (
+          ?,
+          (SELECT id FROM types WHERE types.name = ?));
+      SET @species_id_to_use = LAST_INSERT_ID();
+      INSERT INTO places_species
+        VALUES (
+          (SELECT id FROM places where places.name = ?),
+          @species_id_to_use);
+      COMMIT;`;
+
+    return pool.query(sqlQuery, [type, name, type, place]);
+
   }
 
 };

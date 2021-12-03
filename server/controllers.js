@@ -33,7 +33,11 @@ module.exports = {
   addSpecies: function(req, res) {
     // query database to insert and respond 201 on success
 
-    models.insertSpecies(req.query)
+    var { type, name, place } = req.query
+    if (!type || !name || !place) {
+      res.status(400).send('Bad request: need `type`, `name`, and `place` query parameter');
+    } else {
+      models.insertSpecies(req.query)
       .then(() => {
         res.status(200).send('added a species');
       })
@@ -41,6 +45,7 @@ module.exports = {
         console.error('error adding a species');
         res.status(400).send(err);
       });
+    }
   }
 
 };

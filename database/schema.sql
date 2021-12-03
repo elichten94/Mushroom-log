@@ -5,7 +5,7 @@ USE mushroom_log;
 
 CREATE TABLE types (
   id INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(20),
+  `name` VARCHAR(20) UNIQUE NOT NULL,
 
   PRIMARY KEY(id)
 );
@@ -13,7 +13,7 @@ CREATE TABLE types (
 
 CREATE TABLE places (
   id INT NOT NULL AUTO_INCREMENT,
- `name` VARCHAR(100),
+ `name` VARCHAR(100) NOT NULL,
 -- techdebt: coordinates VARCHAR(100)
 
  PRIMARY KEY(id)
@@ -21,7 +21,7 @@ CREATE TABLE places (
 
 CREATE TABLE species (
   id INT NOT NULL AUTO_INCREMENT,
- `name` VARCHAR(50),
+ `name` VARCHAR(50) NOT NULL,
  -- techdebt: use an enum
  `type_id` INT NOT NULL,
 

@@ -1,17 +1,23 @@
 USE mushroom_log;
 
 
-insert into places
-(name)
-  VALUES
-  ('')
+
+-- first, insert/ignore the type
+
+START TRANSACTION;
+insert ignore into types (name)
+ VALUES ('fungi');
+INSERT INTO species (name, type_id)
+  VALUES (
+    'inky caps',
+    (SELECT id FROM types WHERE types.name = 'fungi'));
+SET @species_id_to_use = LAST_INSERT_ID();
+INSERT INTO places_species
+  VALUES (
+    (SELECT id FROM places where places.name = 'peters rock park'),
+    @species_id_to_use);
+COMMIT;
 
 
 
---     (SELECT CAST(CONCAT('[', GROUP_CONCAT(JSON_OBJECT("id", id, "url", url)), ']') AS JSON)
---       FROM photos
---       WHERE review_id = reviews.id
---     )
---     AS photos
--- FROM reviews
--- WHERE product_id = ?
+select * from places_species;
