@@ -25,8 +25,6 @@ import {
  * submitPlace (function)
  */
  const Tile = (props) => {
-console.log('props marker name:', props.marker.name);
-  // state of form entered
   var [tile, setTile] = React.useState({
     placeText: '',
     speciesText: '',
@@ -35,10 +33,6 @@ console.log('props marker name:', props.marker.name);
     name: props.marker.name.length ? props.marker.name : ''
   });
 
-  console.log('PROPS:', props);
-
-
-  // formview just determines the display before and after entering the location
   var [formView, setFormView] = React.useState(Boolean(!props.marker.name));
 
   const updatePlace = (event) => {
@@ -65,8 +59,6 @@ console.log('props marker name:', props.marker.name);
 
 
 
-    // console.log('about to submit species with species:', tile.speciesText, 'loacation:', props.marker.name);
-    // console.log('function for submitting species:', props.submitSpecies)
     props.submitSpecies(tile.speciesText, tile.name)
       .then(() => {
         var newSpecies = [...tile.species];
@@ -91,8 +83,6 @@ console.log('props marker name:', props.marker.name);
       alert('Please enter a place!');
       return;
     }
-    // tile.place = tile.placeText;
-
 
     props.submitPlace({
       place: nameToAdd,
@@ -100,17 +90,12 @@ console.log('props marker name:', props.marker.name);
       lng: tile.coordinates.lng
     })
     .then(() => {
-      // wait for it to be sent to the database
-
       setTile({
         ...tile,
         name: nameToAdd
       });
       setFormView(!formView);
-      // NEED TO SET STATE GLOBAL AGAIN
-      // props.retriveMarkers([]);
-
-
+      props.retriveMarkers([]);
     })
     .catch((err) => {
       throw err;
@@ -128,9 +113,7 @@ console.log('props marker name:', props.marker.name);
       </div>
     );
   } else {
-    // make the entered location the title
     // give a prompt for species
-
     var placeHeading = tile.placeText.length ? tile.placeText : props.marker.name;
     return (
 
@@ -138,13 +121,10 @@ console.log('props marker name:', props.marker.name);
             <Heading className="place"  as="h3" size="md">
               {placeHeading}
             </Heading>
-
             <FormControl className='add-species-form'>
               <Input type='text' onChange={updateSpecies} placeholder='Enter a species' />
               <Button className="form-button" colorScheme='green' onClick={addSpecies} size="md">Add </Button>
-
             </FormControl>
-
             <SpeciesList species={tile.species}/ >
           </div>
 
