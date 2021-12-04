@@ -5,7 +5,7 @@ const Header = (props) => {
     <div id="top-block">
       <div id="header">
         <h1 id="title">The Mushroom Log</h1>
-        <img src={require("./mushroom-svgrepo-com.svg")} alt="morel.jpeg"/>
+        <img id="header-img" src={require("./mushroom-svgrepo-com.svg")} alt="morel.jpeg"/>
       </div>
     </div>
   );
