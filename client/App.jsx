@@ -1,15 +1,19 @@
 import React from 'react';
 import Header from './components/Header.jsx';
-import MapArea from './components/map_inset/MapArea.jsx';
+import MapContainer from './components/MapContainer.jsx';
 import Tiles from './components/Tiles.jsx';
 
 const App = () => {
+
+
+
+
   return (
-    <React.Fragment>
+    <div id="main-block">
       <Header />
-      <MapArea />
+      <MapContainer />
       <Tiles />
-    </React.Fragment>
+    </div>
   );
 };
 

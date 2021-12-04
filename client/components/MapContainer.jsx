@@ -1,4 +1,4 @@
-import API_KEY from '../../../googleConfig.js';
+import API_KEY from '../../googleConfig.js';
 import React from 'react';
 import { GoogleMap,
   useLoadScript,
@@ -6,7 +6,6 @@ import { GoogleMap,
   InfoWindow
 } from '@react-google-maps/api';
 
-// import '@reach/combobox/styles.css';
 
 const libraries = ['places'];
 const mapContainerStyle = {
@@ -20,7 +19,7 @@ const center = {
 };
 
 
-const MapContainer = () => {
+const MapContainer = (props) => {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: API_KEY,
     libraries
@@ -42,6 +41,7 @@ const MapContainer = () => {
         zoom={8}
         center={center}
         onClick={(event) => {
+          props.createInset;
           setMarkers((oldState) => [
             ...oldState,
             {
@@ -52,7 +52,12 @@ const MapContainer = () => {
       >
         {
           markers.map((marker, i) => (
-            <Marker key={i} position={{lat: marker.lat, lng: marker.lng}} />
+            <Marker key={i}
+            position={{lat: marker.lat, lng: marker.lng}}
+            icon={{
+              url: 'https://upload.wikimedia.org/wikipedia/commons/f/f7/Mushroom.svg',
+              scaledSize: new window.google.maps.Size(30, 30)
+            }} />
           ))
         }
 
