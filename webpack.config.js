@@ -1,6 +1,5 @@
 const path = require('path');
 
-
 module.exports = {
 
   entry: './client/index.jsx',
@@ -8,6 +7,7 @@ module.exports = {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
   },
+  devtool: 'source-map',
   module: {
     rules: [
       {

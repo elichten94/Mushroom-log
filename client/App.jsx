@@ -6,13 +6,11 @@ import './style.scss';
 
 const App = () => {
 
-
-
-
   return (
     <div id="main-block">
       <Header />
       <MapContainer />
+      <h3 id="tile-banner">My spots:</h3>
       <Tiles />
     </div>
   );

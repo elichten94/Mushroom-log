@@ -36,6 +36,7 @@ const MapContainer = (props) => {
 
   return (
     <div id="map-container">
+      <h3>Scroll through the map to add your favorite spots!</h3>
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
         zoom={8}
@@ -50,16 +51,14 @@ const MapContainer = (props) => {
             }])
         }}
       >
-        {
-          markers.map((marker, i) => (
+        {markers.map((marker, i) => (
             <Marker key={i}
             position={{lat: marker.lat, lng: marker.lng}}
             icon={{
               url: 'https://upload.wikimedia.org/wikipedia/commons/f/f7/Mushroom.svg',
               scaledSize: new window.google.maps.Size(30, 30)
             }} />
-          ))
-        }
+          ))}
 
       </GoogleMap>
     </div>);
