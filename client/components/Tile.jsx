@@ -27,17 +27,18 @@ import {
  * submitPlace (function)
  */
  const Tile = (props) => {
-console.log('PROPS IN TILE:', props);
+
   // state of form entered
   var [tile, setTile] = React.useState({
     placeText: '',
     speciesText: '',
     species: props.marker.species,
-    coordinates: props.marker.coordinates
+    coordinates: props.marker.coordinates,
+    name: props.marker.name
 
   });
 
-
+  console.log('MARKER FROM PROPS IN TILE:', props.marker);
 
 
   // formview just determines the display before and after entering the location
@@ -67,7 +68,7 @@ console.log('PROPS IN TILE:', props);
 
     console.log('about to submit species with species:', tile.speciesText, 'loacation:', props.marker.name);
     console.log('function for sumitting species:', props.submitSpecies)
-    props.submitSpecies(tile.speciesText, props.marker.name)
+    props.submitSpecies(tile.speciesText, tile.name)
       .then(() => {
         console.log('THE TILE STATE:', tile );
         console.log('spread species: ', [...tile.species]);
@@ -92,6 +93,7 @@ console.log('PROPS IN TILE:', props);
     event.preventDefault();
     if (!tile.placeText.length) {
       alert('Please enter a place!');
+      return;
     }
     props.submitPlace({
       place: tile.placeText,
