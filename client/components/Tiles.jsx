@@ -10,7 +10,6 @@ import { Flex, Spacer } from '@chakra-ui/react';
 
 
 const Tiles = (props) => {
-console.log('THE TILE PROPS:', props.tileProps);
   return (
     <div id="tiles">
 
@@ -20,6 +19,7 @@ console.log('THE TILE PROPS:', props.tileProps);
           marker={marker}
           submitSpecies={props.tileProps.submitSpecies}
           submitPlace={props.tileProps.submitPlace}
+          retriveMarkers={props.tileProps.retriveMarkers}
           />
         ))}
 

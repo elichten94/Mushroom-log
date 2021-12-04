@@ -24,10 +24,10 @@ class App extends React.Component {
     // make a new request
     // on success set state
     var addMarkers = this.addMarkers;
-    console.log(this);
+
     request.getAll()
       .then(({ data }) => {
-        console.log(data);
+
         addMarkers(data);
       })
       .catch((err) => {
@@ -35,6 +35,21 @@ class App extends React.Component {
       })
 
   }
+
+  // componenetDidUpdate(prevProps, prevState) {
+  //   if (JSON.stringify(prevState) !== JSON.stringify(this.state)) {
+  //     var addMarkers = this.addMarkers;
+  //     request.getAll()
+  //     .then(({ data }) => {
+  //       console.log(data);
+  //       addMarkers(data);
+  //     })
+  //     .catch((err) => {
+  //       throw err;
+  //     })
+
+  //   }
+  // }
 
   addMarkers(newMarkers) {
     // can be a single marker or array of markers from an api call
@@ -57,11 +72,14 @@ class App extends React.Component {
     var tileProps = {
       submitSpecies: request.addSpecies,
       submitPlace: request.addPlace,
+      retriveMarkers: this.addMarkers,
       markers: this.state.markers
     }
 
 
-    console.log('markers as state? ', this.state.markers);
+
+
+
     return (
       <div id="main-block">
         <Header />

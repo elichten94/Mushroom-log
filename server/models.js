@@ -18,9 +18,6 @@ module.exports = {
 
   insertPlace: function({ place, lat, lng }) {
     // insert a place to the database
-    console.log('calling mysql from insertPlace');
-
-    console.log('HENLO');
 
     var sqlQuery = `
       INSERT INTO places (name, lat, lng)
@@ -34,7 +31,6 @@ module.exports = {
     // insert a species to the db
   // params: type and name
 
-  console.log('calling mysql from insertPlace')
     var sqlQuery = `
       START TRANSACTION;
       INSERT INTO species (name)

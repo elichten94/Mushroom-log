@@ -32,13 +32,11 @@ const MapContainer = ({markers, addMarkers}) => {
   //   return 'Loading Map...';
   // }
 
-  console.log('markers:', markers);
+  // console.log('markers:', markers);
 
   const handleMapClick = (event) => {
-    console.log('event!');
     var lat = event.latLng.lat();
     var lng = event.latLng.lng();
-    console.log('coordinates: ', lat, lng);
 
     // ** adds a new inset for the user to fill in **
 

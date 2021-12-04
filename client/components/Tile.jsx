@@ -4,11 +4,9 @@ import {
   Heading,
   FormControl,
   FormLabel,
-  FormErrorMessage,
-  FormHelperText,
   Input,
   Button
-} from '@chakra-ui/react'
+} from '@chakra-ui/react';
 
 //TECHDEBT: refactor this to render exisiting data as well as serving as a new form
 
@@ -35,10 +33,9 @@ import {
     species: props.marker.species,
     coordinates: props.marker.coordinates,
     name: props.marker.name
-
   });
 
-  console.log('MARKER FROM PROPS IN TILE:', props.marker);
+  console.log('PROPS:', props);
 
 
   // formview just determines the display before and after entering the location
@@ -66,17 +63,14 @@ import {
       return;
     }
 
-    console.log('about to submit species with species:', tile.speciesText, 'loacation:', props.marker.name);
-    console.log('function for sumitting species:', props.submitSpecies)
+
+
+    // console.log('about to submit species with species:', tile.speciesText, 'loacation:', props.marker.name);
+    // console.log('function for submitting species:', props.submitSpecies)
     props.submitSpecies(tile.speciesText, tile.name)
       .then(() => {
-        console.log('THE TILE STATE:', tile );
-        console.log('spread species: ', [...tile.species]);
-
         var newSpecies = [...tile.species];
         newSpecies.push(tile.speciesText);
-        console.log('HERE ARE THE PROPS: ', props);
-        console.log('NEW SPECIES LIST:', newSpecies );
 
         setTile({
           ...tile,
@@ -90,6 +84,8 @@ import {
   };
 
   const addPlace = (event) => {
+
+    xconsole.log('placetext: ', tile.placetext);
     event.preventDefault();
     if (!tile.placeText.length) {
       alert('Please enter a place!');
@@ -103,36 +99,27 @@ import {
     .then(() => {
       // wait for it to be sent to the database
       setFormView(!formView);
+      // NEED TO SET STATE GLOBAL AGAIN
+      props.retriveMarkers([]);
     })
     .catch((err) => {
       throw err;
     });
   };
 
-  console.log('TILE:', tile);
-
-
   if (formView) {
     // return a prompt for location
     return (
       <div className="tile">
-        {/* <form className="add-place-form">
-          <input type="text" onChange={updatePlace} placeholder="My spot"/>
-          <button onClick={addPlace}>Add a place</button>
-        </form> */}
         <FormControl className='add-place-form'>
-              <Input type='text' onChange={updatePlace} placeholder='Describe the place' />
-              <Button className="form-button" colorScheme='blue' onClick={addPlace} size="md">Add </Button>
-
-            </FormControl>
-
+          <Input type='text' onChange={updatePlace} placeholder='Describe the place' />
+          <Button className="form-button" colorScheme='blue' onClick={addPlace} size="md">Add </Button>
+        </FormControl>
       </div>
-
     );
   } else {
     // make the entered location the title
     // give a prompt for species
-    console.log('props: ', props.marker);
 
     var placeHeading = tile.placeText.length ? tile.placeText : props.marker.name;
     return (

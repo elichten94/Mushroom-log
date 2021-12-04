@@ -35,10 +35,11 @@ module.exports = {
 
   addSpecies: function(req, res) {
     // query database to insert and respond 201 on success
-    console.log('bod:', req.body)
-    var { name, place } = req.body
+    console.log(req.body);
+    var { name, place } = req.body;
     if (!name || !place) {
-      console.log('error in here')
+      console.log('error in body params (addSpecies)');
+
       res.status(400).send('Bad request: need `name` and `place` query parameter');
     } else {
       models.insertSpecies(req.body)
