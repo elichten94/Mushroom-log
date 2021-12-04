@@ -43,7 +43,8 @@ const MapContainer = ({markers, addMarkers, selected, setSelected}) => {
             position={{lat: marker.coordinates.lat, lng: marker.coordinates.lng}}
             icon={{
               url: 'https://upload.wikimedia.org/wikipedia/commons/f/f7/Mushroom.svg',
-              scaledSize: new window.google.maps.Size(30, 30)
+              scaledSize: new window.google.maps.Size(30, 30),
+
             }}
             onClick={() => {
               setSelected(marker);
@@ -53,15 +54,16 @@ const MapContainer = ({markers, addMarkers, selected, setSelected}) => {
 
           {
             selected ? (<InfoWindow position={{
-              lat: selected.coordinates.lat,
+              lat: selected.coordinates.lat + 0.1,
               lng: selected.coordinates.lng
               }}
               onCloseClick={() => {
                 setSelected(null);
               }}
+
             >
               <div>
-                Hello!
+                {selected.name}
               </div>
             </InfoWindow>)
             :
