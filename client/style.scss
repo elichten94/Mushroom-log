@@ -1,6 +1,12 @@
+#top-block {
+  margin: 0.5em;
+}
+
 #title {
   color: darkgoldenrod;
 }
+
+
 
 #tiles {
   display: flex;
@@ -10,8 +16,12 @@
 
 .tile {
   border: 1px solid black;
+  padding: 1em;
 }
 
-// .tile > * {
-//   padding: 1em;
-// }
+.add-species-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin: 0.5em
+}

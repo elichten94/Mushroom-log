@@ -18,10 +18,14 @@ const request = {
 
 
 
-  addSpecies: function(species) {
+  addSpecies: function(species, place) {
     console.log('called!');
     return axios.post(BASE_URL + '/species', {
-      species: species
+      name: species,
+      place: place
+
+    }).then((response)=> {
+      console.log('RESPONSE FROM THE SERVER:', response)
     });
   }
 

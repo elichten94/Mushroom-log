@@ -36,6 +36,9 @@ import {
 
   });
 
+
+
+
   // formview just determines the display before and after entering the location
   var [formView, setFormView] = React.useState(Boolean(!props.marker.name));
 
@@ -55,18 +58,31 @@ import {
 
   const addSpecies = (event) => {
     event.preventDefault();
-    console.log('it was clicked!');
+    console.log('tile.speciesText:', tile.speciesText);
     if (!tile.speciesText.length) {
       alert('Please enter a species!');
+      return;
     }
-    props.submitSpecies(speciesText)
+
+    console.log('about to submit species with species:', tile.speciesText, 'loacation:', props.marker.name);
+    console.log('function for sumitting species:', props.submitSpecies)
+    props.submitSpecies(tile.speciesText, props.marker.name)
       .then(() => {
-        var newSpecies = [...tile.species].push(speciesText)
+        console.log('THE TILE STATE:', tile );
+        console.log('spread species: ', [...tile.species]);
+
+        var newSpecies = [...tile.species];
+        newSpecies.push(tile.speciesText);
+        console.log('HERE ARE THE PROPS: ', props);
+        console.log('NEW SPECIES LIST:', newSpecies );
+
         setTile({
+          ...tile,
           species: newSpecies
         });
       })
       .catch((err) => {
+        console.error('errant request -Elliot')
         throw err;
       })
   };
@@ -90,6 +106,8 @@ import {
     });
   };
 
+  console.log('TILE:', tile);
+
 
   if (formView) {
     // return a prompt for location
@@ -100,8 +118,8 @@ import {
           <button onClick={addPlace}>Add a place</button>
         </form> */}
         <FormControl className='add-place-form'>
-              <Input type='text' onChange={updatePlace} placeholder='Add a place' />
-              <Button onClick={addPlace} size="sm">Add </Button>
+              <Input type='text' onChange={updatePlace} placeholder='Describe the place' />
+              <Button className="form-button" colorScheme='blue' onClick={addPlace} size="md">Add </Button>
 
             </FormControl>
 
@@ -122,8 +140,8 @@ import {
             </Heading>
 
             <FormControl className='add-species-form'>
-              <Input type='text' onChange={updateSpecies} placeholder='Add a species' />
-              <Button onClick={addSpecies} size="sm">Add </Button>
+              <Input type='text' onChange={updateSpecies} placeholder='Enter a species' />
+              <Button className="form-button" colorScheme='green' onClick={addSpecies} size="md">Add </Button>
 
             </FormControl>
 

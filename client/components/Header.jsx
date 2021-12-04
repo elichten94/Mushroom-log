@@ -3,7 +3,7 @@ import { Heading, Text, Flex } from '@chakra-ui/react'
 const Header = (props) => {
   return (
     <div id="top-block">
-      <Flex id="header" direction="row" justify="space-between">
+      <Flex id="header" direction="row" justify="space-evenly">
         <Heading id="title" as="h1" size="xl">
           The Mushroom Log
         </Heading>

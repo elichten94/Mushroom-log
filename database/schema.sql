@@ -22,12 +22,9 @@ CREATE TABLE places (
 CREATE TABLE species (
   id INT NOT NULL AUTO_INCREMENT,
  `name` VARCHAR(50) NOT NULL,
- -- techdebt: use an enum
- `type_id` INT NOT NULL,
+ -- techdebt: use a `type` field for animal, plant etc;
 
-  PRIMARY KEY(id),
-  FOREIGN KEY(`type_id`)
-    REFERENCES types(id)
+  PRIMARY KEY(id)
 );
 
 CREATE TABLE places_species (
@@ -52,12 +49,12 @@ INSERT INTO places (name, lat, lng)
     ('Golden Gate', 37.770946373962055, -122.48292118407657),
     ('Elk Glen', 37.767754870162044, -122.48068188610866);
 
-INSERT INTO species (name, type_id)
+INSERT INTO species (name)
   VALUES
-    ('diminutive morels', 1),
-    ('jack in the pulpit', 2),
-    ('ramps', 2),
-    ('wild garlic', 2);
+    ('diminutive morels'),
+    ('jack in the pulpit'),
+    ('ramps'),
+    ('wild garlic');
 
 INSERT INTO places_species
   VALUES

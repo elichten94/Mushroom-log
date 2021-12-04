@@ -10,7 +10,7 @@ module.exports = {
         res.status(200).send(shapedData);
       })
       .catch((err) => {
-        console.error('error getting places and species');
+        console.err('error getting places and species', err);
         res.status(404).send(err);
       });
   },
@@ -22,11 +22,11 @@ module.exports = {
       res.status(400).send('Bad request: need `place` query parameter');
     } else {
       models.insertPlace(req.body)
-      .then(() => {
+      .then(([rows, fields]) => {
         res.status(200).send('added a place');
       })
       .catch((err) => {
-        console.error('error adding a place');
+        console.log('error adding a place', err);
         res.status(400).send(err);
       });
     }
@@ -35,17 +35,18 @@ module.exports = {
 
   addSpecies: function(req, res) {
     // query database to insert and respond 201 on success
-
-    var { type, name, place } = req.body
-    if (!type || !name || !place) {
-      res.status(400).send('Bad request: need `type`, `name`, and `place` query parameter');
+    console.log('bod:', req.body)
+    var { name, place } = req.body
+    if (!name || !place) {
+      console.log('error in here')
+      res.status(400).send('Bad request: need `name` and `place` query parameter');
     } else {
       models.insertSpecies(req.body)
-      .then(() => {
+      .then(([rows, fields]) => {
         res.status(200).send('added a species');
       })
       .catch((err) => {
-        console.error('error adding a species');
+        console.log('error adding a species', err);
         res.status(400).send(err);
       });
     }

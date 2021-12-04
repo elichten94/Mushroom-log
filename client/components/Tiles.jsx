@@ -10,7 +10,7 @@ import { Flex, Spacer } from '@chakra-ui/react';
 
 
 const Tiles = (props) => {
-
+console.log('props from tiles:', props);
   return (
     <div id="tiles">
 
