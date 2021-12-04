@@ -36,6 +36,7 @@
     "@babel/plugin-syntax-jsx": "^7.16.0",
     "@babel/preset-react": "^7.16.0",
     "@babel/runtime": "^7.16.3",
+    "@reach/combobox": "^0.16.4",
     "@react-google-maps/api": "^2.7.0",
     "axios": "^0.24.0",
     "dotenv": "^10.0.0",
