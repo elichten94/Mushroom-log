@@ -1,7 +1,7 @@
 const MarkerWithData = function(lat, lng) {
   this.coordinates = {
-    lat: lat,
-    lng: lng
+    lat: Number(lat),
+    lng: Number(lng)
   }
 };
 

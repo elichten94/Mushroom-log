@@ -2,8 +2,8 @@ var Response = function(og) {
   this.name = og.place;
   this.species = Array.isArray(og.species) ? og.species : [og.species];
   this.coordinates = {
-    lat: og.lat,
-    lng: og.lng
+    lat: Number(og.lat),
+    lng: Number(og.lng)
   };
 };
 

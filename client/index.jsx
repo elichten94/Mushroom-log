@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App.jsx';
+import API_KEY from '../googleConfig.js';
 const libraries = ['places'];
 
-
-import useLoadScript from '@react-google-maps/api';
+import { useLoadScript } from '@react-google-maps/api';
 
 const Root = () => {
   const { isLoaded, loadError } = useLoadScript({
@@ -12,16 +12,17 @@ const Root = () => {
     libraries
   });
 
-
   if (loadError) {
-    return 'Error loading map :(';
+    return (<div>Error loading map</div>);
   } else if (!isLoaded) {
-    return 'Loading Map...';
+    return (<div>Loading Map...</div>);
   } else {
-    ReactDOM.render(<App />, document.getElementById('app'));
+    return (<App />);
   }
 
 }
+
+ReactDOM.render(<Root />, document.getElementById('app'));
 
 
 

@@ -1,8 +1,6 @@
-import API_KEY from '../../googleConfig.js';
 import React from 'react';
 import MarkerWithData from '../MarkerWithData.js';
 import { GoogleMap,
-  useLoadScript,
   Marker,
   InfoWindow
 } from '@react-google-maps/api';

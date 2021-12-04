@@ -41,13 +41,12 @@ class App extends React.Component {
     // get all data here
     // make a new request
     // on success set state
-    const setState = this.setState;
+    var setMarkers = this.setMarkers;
+    console.log(this);
     request.getAll()
       .then(({ data }) => {
         console.log(data);
-        setState({
-          markers: data
-        });
+        setMarkers(data);
       })
       .catch((err) => {
         throw err;
@@ -55,14 +54,18 @@ class App extends React.Component {
 
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  // componentDidUpdate(prevProps, prevState) {
 
-  }
+  // }
 
   setMarkers(newMarker) {
-
     var stateCopy = [...this.state.markers]
-    stateCopy.push(newMarker);
+    if (Array.isArray(newMarker)) {
+      stateCopy = stateCopy.concat(newMarker);
+    } else {
+      stateCopy.push(newMarker);
+    }
+
     this.setState({
       markers: stateCopy
     });
@@ -74,6 +77,7 @@ class App extends React.Component {
 // submitPlace: request.addPlace
 
   render() {
+    console.log('markers as state? ', this.state.markers);
     return (
       <div id="main-block">
         <Header />
