@@ -1,7 +1,7 @@
 import React from 'react';
-import Header from './Header.jsx';
-import Map from './Map,jsx';
-import Tiles from './Tiles.jsx';
+import Header from './components/Header.jsx';
+import Map from './components/Map.jsx';
+import Tiles from './components/Tiles.jsx';
 
 const App = () => {
   return (
@@ -12,3 +12,5 @@ const App = () => {
     </React.Fragment>
   );
 };
+
+export default App;
