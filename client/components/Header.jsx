@@ -1,15 +1,17 @@
 import React from 'react';
-
+import { Heading, Text, Flex } from '@chakra-ui/react'
 const Header = (props) => {
   return (
     <div id="top-block">
-      <div id="header">
-        <h1 id="title">The Mushroom Log</h1>
+      <Flex id="header" direction="row" justify="space-between">
+        <Heading id="title" as="h1" size="xl">
+          The Mushroom Log
+        </Heading>
         <img id="header-img" src={require("./mushroom-svgrepo-com.svg")} alt="morel.jpeg"/>
-      </div>
-      <div id="subheader">
-        <h2>A forager's diary</h2>
-      </div>
+      </Flex>
+      <Heading as="h2" id="subheader" size="md" >
+        A diary for foragers
+      </Heading>
     </div>
   );
 };

@@ -1,3 +1,17 @@
 #title {
   color: darkgoldenrod;
 }
+
+#tiles {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.tile {
+  border: 1px solid black;
+}
+
+// .tile > * {
+//   padding: 1em;
+// }

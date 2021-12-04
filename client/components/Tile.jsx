@@ -1,5 +1,14 @@
 import React from 'react';
 import SpeciesList from './SpeciesList.jsx';
+import {
+  Heading,
+  FormControl,
+  FormLabel,
+  FormErrorMessage,
+  FormHelperText,
+  Input,
+  Button
+} from '@chakra-ui/react'
 
 //TECHDEBT: refactor this to render exisiting data as well as serving as a new form
 
@@ -46,6 +55,7 @@ import SpeciesList from './SpeciesList.jsx';
 
   const addSpecies = (event) => {
     event.preventDefault();
+    console.log('it was clicked!');
     if (!tile.speciesText.length) {
       alert('Please enter a species!');
     }
@@ -85,24 +95,41 @@ import SpeciesList from './SpeciesList.jsx';
     // return a prompt for location
     return (
       <div className="tile">
-        <form className="add-place-form">
+        {/* <form className="add-place-form">
           <input type="text" onChange={updatePlace} placeholder="My spot"/>
           <button onClick={addPlace}>Add a place</button>
-        </form>
+        </form> */}
+        <FormControl className='add-place-form'>
+              <Input type='text' onChange={updatePlace} placeholder='Add a place' />
+              <Button onClick={addPlace} size="sm">Add </Button>
+
+            </FormControl>
+
       </div>
+
     );
   } else {
     // make the entered location the title
     // give a prompt for species
+    console.log('props: ', props.marker);
+
+    var placeHeading = tile.placeText.length ? tile.placeText : props.marker.name;
     return (
-      <div className="tile">
-        <p className="place">{tile.placeText}</p>
-        <form className="add-species-form >
-          <input type="text" onChange={updateSpecies} placeholder="Species"/>
-          <button onClick={addSpecies}>Add species</button>
-        </form>
-        <SpeciesList species={tile.species}/ >
-      </div>
+
+          <div className="tile">
+            <Heading className="place"  as="h3" size="md">
+              {placeHeading}
+            </Heading>
+
+            <FormControl className='add-species-form'>
+              <Input type='text' onChange={updateSpecies} placeholder='Add a species' />
+              <Button onClick={addSpecies} size="sm">Add </Button>
+
+            </FormControl>
+
+            <SpeciesList species={tile.species}/ >
+          </div>
+
     );
   }
 };
