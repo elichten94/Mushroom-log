@@ -10,23 +10,8 @@ import MarkerWithData from './MarkerWithData.js';
 //   console.log(lat, lng);
 // };
 
-var allProps = {
-  tileProps: {
-    placesToSpecies: {
-      chicago: [
-        'morels',
-        'leeks'
-      ],
-      sanFran: [
-        'palm hearts',
-        'artichoke',
-        'porcini'
-      ]
-    },
-    submitSpecies: request.addSpecies,
-    submitPlace: request.addPlace
-  }
-}
+
+
 
 // idea: have a global state here of tiles from db, AND
   // THE NUMBER of tiles that should be here
@@ -54,7 +39,20 @@ class App extends React.Component {
 
   componentDidMount() {
     // get all data here
-    // make a new
+    // make a new request
+    // on success set state
+    const setState = this.setState;
+    request.getAll()
+      .then(({ data }) => {
+        console.log(data);
+        setState({
+          markers: data
+        });
+      })
+      .catch((err) => {
+        throw err;
+      })
+
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -71,13 +69,17 @@ class App extends React.Component {
   }
 
 
+// add these in later:
+//     submitSpecies: request.addSpecies,
+// submitPlace: request.addPlace
+
   render() {
     return (
       <div id="main-block">
         <Header />
         <MapContainer markers={this.state.markers} setMarkers={this.setMarkers}/>
         <h3 id="tile-banner">My spots:</h3>
-        <Tiles tileProps={allProps.tileProps}/>
+        {/* <Tiles tileProps={allProps.tileProps}/> */}
       </div>
     );
 

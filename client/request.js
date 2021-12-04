@@ -6,10 +6,13 @@ const request = {
     return axios.get(BASE_URL + '/observations');
   },
 
-  addPlace: function(place) {
+  // should be an object with .name .lat and .lng properties
+  addPlace: function({ name, lat, lng }) {
     console.log('called!');
     return axios.post(BASE_URL + '/places', {
-      place: place
+      name: name,
+      lat: lat,
+      lng: lng
     });
   },
 

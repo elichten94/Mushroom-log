@@ -1,11 +1,13 @@
 const models = require('./models.js');
+const transform = require('./transform');
 
 module.exports = {
   requestAll: function(req, res) {
     // query database and respond with results
     models.selectAll()
       .then(([rows, fields]) => {
-        res.status(200).send(rows);
+        var shapedData = transform.shapeData(rows);
+        res.status(200).send(shapedData);
       })
       .catch((err) => {
         console.error('error getting places and species');

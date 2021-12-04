@@ -6,7 +6,13 @@ import SpeciesList from './SpeciesList.jsx';
 
 // EXPECTED PROPS:
 /**
- * place (string)
+ * place (object)
+ *    if the object doenst have a name field length,
+ *      we open a new card
+ *
+ *    if it does
+ *      we open a card with the name
+ *
  * species (array)
  * submitSpecies (function)
  * submitPlace (function)
@@ -22,8 +28,9 @@ import SpeciesList from './SpeciesList.jsx';
   });
 
   // formview just determines the display before and after entering the location
-  var [formView, setFormView] = React.useState(true);
 
+
+  var [formView, setFormView] = React.useState(Boolean(!props.place.name));
 
   const updatePlace = (event) => {
     setTile({

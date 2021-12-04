@@ -1,6 +1,8 @@
 const MarkerWithData = function(lat, lng) {
-  this.lat = lat,
-  this.lng = lng
-}
+  this.coordinates = {
+    lat: lat,
+    lng: lng
+  }
+};
 
 export default MarkerWithData;

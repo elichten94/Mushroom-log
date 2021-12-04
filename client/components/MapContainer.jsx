@@ -8,7 +8,7 @@ import { GoogleMap,
 } from '@react-google-maps/api';
 
 
-const libraries = ['places'];
+// const libraries = ['places'];
 const mapContainerStyle = {
   width: '100vw',
   height: '100vh'
@@ -21,18 +21,19 @@ const center = {
 
 
 const MapContainer = ({markers, setMarkers}) => {
-  const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: API_KEY,
-    libraries
-  });
+  // const { isLoaded, loadError } = useLoadScript({
+  //   googleMapsApiKey: API_KEY,
+  //   libraries
+  // });
 
 
-  if (loadError) {
-    return 'Error loading map :(';
-  } else if (!isLoaded) {
-    return 'Loading Map...';
-  }
+  // if (loadError) {
+  //   return 'Error loading map :(';
+  // } else if (!isLoaded) {
+  //   return 'Loading Map...';
+  // }
 
+  console.log('markers:', markers);
 
   const handleMapClick = (event) => {
     console.log('event!');
@@ -57,7 +58,7 @@ const MapContainer = ({markers, setMarkers}) => {
       >
         {markers.map((marker, i) => (
             <Marker key={i}
-            position={{lat: marker.lat, lng: marker.lng}}
+            position={{lat: marker.coordinates.lat, lng: marker.coordinates.lng}}
             icon={{
               url: 'https://upload.wikimedia.org/wikipedia/commons/f/f7/Mushroom.svg',
               scaledSize: new window.google.maps.Size(30, 30)

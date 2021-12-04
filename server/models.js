@@ -4,14 +4,15 @@ module.exports = {
   selectAll: function() {
     // select all observations from db
     var sqlQuery = `
-      SELECT places.name AS place, species.name AS species, types.name AS type
+      SELECT places.name AS place, species.name AS species, types.name AS type, places.lat, places.lng
       FROM places
       INNER JOIN places_species ON
       places_species.place_id = places.id
       INNER JOIN species ON
       places_species.species_id = species.id
       INNER JOIN types ON
-      types.id = species.type_id;`;
+      types.id = species.type_id
+      ORDER BY places.name;`;
 
     return pool.query(sqlQuery);
 
