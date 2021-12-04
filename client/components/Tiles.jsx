@@ -11,8 +11,8 @@ const Tiles = (props) => {
         key={i}
         place={place}
         species={props.tileProps.placesToSpecies[place]}
-        submitSpecies={props.tileProps.submitPlace}
-        submitPlace={props.tileProps.submitSpecies}
+        submitSpecies={props.tileProps.submitSpecies}
+        submitPlace={props.tileProps.submitPlace}
         />
       ))}
     </div>

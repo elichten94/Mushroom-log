@@ -18,7 +18,7 @@ import SpeciesList from './SpeciesList.jsx';
     placeText: '',
     speciesText: '',
     // later - species: props.species //array
-    species: []
+    species: ['heccin borb', 'bear?']
   });
 
   // formview just determines the display before and after entering the location
@@ -27,18 +27,23 @@ import SpeciesList from './SpeciesList.jsx';
 
   const updatePlace = (event) => {
     setTile({
+      ...tile,
       placeText: event.target.value
     });
   };
 
   const updateSpecies = (event) => {
     setTile({
+      ...tile,
       speciesText: event.target.value
     });
   };
 
   const addSpecies = (event) => {
     event.preventDefault();
+    if (!tile.speciesText.length) {
+      alert('Please enter a species!');
+    }
     props.submitSpecies(speciesText)
       .then(() => {
         var newSpecies = [...tile.species].push(speciesText)
@@ -52,9 +57,10 @@ import SpeciesList from './SpeciesList.jsx';
   };
 
   const addPlace = (event) => {
-    console.log('tile state:', tile);
-
     event.preventDefault();
+    if (!tile.placeText.length) {
+      alert('Please enter a place!');
+    }
     props.submitPlace(tile.placeText)
     .then(() => {
       // wait for it to be sent to the database

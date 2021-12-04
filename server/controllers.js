@@ -14,11 +14,12 @@ module.exports = {
   },
 
   addPlaces: function(req, res) {
+    console.log(req.body);
     // query database to insert and respond 201 on success
-    if (req.query.place === undefined) {
+    if (req.body.place === undefined) {
       res.status(400).send('Bad request: need `place` query parameter');
     } else {
-      models.insertPlace(req.query)
+      models.insertPlace(req.body)
       .then(() => {
         res.status(200).send('added a place');
       })
@@ -33,11 +34,11 @@ module.exports = {
   addSpecies: function(req, res) {
     // query database to insert and respond 201 on success
 
-    var { type, name, place } = req.query
+    var { type, name, place } = req.body
     if (!type || !name || !place) {
       res.status(400).send('Bad request: need `type`, `name`, and `place` query parameter');
     } else {
-      models.insertSpecies(req.query)
+      models.insertSpecies(req.body)
       .then(() => {
         res.status(200).send('added a species');
       })
