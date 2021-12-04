@@ -5,7 +5,7 @@ const SpeciesList = (props) => {
   return (
     <div id="species-list">
       {props.species.map((name, i) => (
-      <p key={i}>{name}</p>
+      <p key={i} className="species">{name}</p>
       ))}
     </div>
   )

@@ -85,9 +85,9 @@ import SpeciesList from './SpeciesList.jsx';
     // return a prompt for location
     return (
       <div className="tile">
-        <form>
-          <input className="place" type="text" onChange={updatePlace} placeholder="My spot"/>
-          <button onClick={addPlace}>Add place</button>
+        <form className="add-place-form">
+          <input type="text" onChange={updatePlace} placeholder="My spot"/>
+          <button onClick={addPlace}>Add a place</button>
         </form>
       </div>
     );
@@ -96,12 +96,12 @@ import SpeciesList from './SpeciesList.jsx';
     // give a prompt for species
     return (
       <div className="tile">
-        <form>
-          <p>{tile.placeText}</p>
-          <input className="species" type="text" onChange={updateSpecies} placeholder="Species"/>
+        <p className="place">{tile.placeText}</p>
+        <form className="add-species-form >
+          <input type="text" onChange={updateSpecies} placeholder="Species"/>
           <button onClick={addSpecies}>Add species</button>
-          <SpeciesList species={tile.species}/ >
         </form>
+        <SpeciesList species={tile.species}/ >
       </div>
     );
   }
