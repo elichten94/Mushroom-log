@@ -23,14 +23,12 @@ import SpeciesList from './SpeciesList.jsx';
   var [tile, setTile] = React.useState({
     placeText: '',
     speciesText: '',
-    // later - species: props.species //array
-    species: ['heccin borb', 'bear?']
+    species: props.marker.species
+
   });
 
   // formview just determines the display before and after entering the location
-
-
-  var [formView, setFormView] = React.useState(Boolean(!props.place.name));
+  var [formView, setFormView] = React.useState(Boolean(!props.marker.name));
 
   const updatePlace = (event) => {
     setTile({
@@ -68,7 +66,11 @@ import SpeciesList from './SpeciesList.jsx';
     if (!tile.placeText.length) {
       alert('Please enter a place!');
     }
-    props.submitPlace(tile.placeText)
+    props.submitPlace({
+      name: tile.placeText,
+      lat: props.marker.lat,
+      long: props.marker.lng
+    })
     .then(() => {
       // wait for it to be sent to the database
       setFormView(!formView);

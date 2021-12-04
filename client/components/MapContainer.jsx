@@ -19,7 +19,7 @@ const center = {
 };
 
 
-const MapContainer = ({markers, setMarkers}) => {
+const MapContainer = ({markers, addMarkers}) => {
   // const { isLoaded, loadError } = useLoadScript({
   //   googleMapsApiKey: API_KEY,
   //   libraries
@@ -43,7 +43,7 @@ const MapContainer = ({markers, setMarkers}) => {
     // ** adds a new inset for the user to fill in **
 
     // note - the props version just takes a new marker to add to state
-    setMarkers(new Response({lat: lat, lng: lng}));
+    addMarkers(new Response({lat: lat, lng: lng}));
   };
 
   return (
