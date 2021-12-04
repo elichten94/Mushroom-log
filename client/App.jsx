@@ -5,6 +5,7 @@ import Tiles from './components/Tiles.jsx';
 import './style.scss';
 import request from './request.js';
 const Response = require('../server/Response.js');
+import { Heading } from '@chakra-ui/react';
 
 
 class App extends React.Component {
@@ -93,7 +94,10 @@ class App extends React.Component {
       <div id="main-block">
         <Header />
         <MapContainer markers={this.state.markers} addMarkers={this.addMarkers} setSelected={this.setSelected} selected={this.state.selected} />
-        <h3 id="tile-banner">My spots:</h3>
+        <Heading id="tile-banner" as="h3" >
+          My spots:
+        </Heading>
+        <hr/>
         {/* render all markers into tiles */}
         <Tiles tileProps={tileProps}/>
       </div>

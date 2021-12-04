@@ -5,6 +5,7 @@ import { GoogleMap,
 } from '@react-google-maps/api';
 const Response = require('../../server/Response.js');
 
+import { Heading } from '@chakra-ui/react';
 
 
 // const libraries = ['places'];
@@ -31,7 +32,10 @@ const MapContainer = ({markers, addMarkers, selected, setSelected}) => {
 
   return (
     <div id="map-container">
-      <h3>Scroll through the map to add your favorite spots!</h3>
+      <Heading as="h3" id="map-banner">
+        Scroll through the map to add your favorite spots!
+      </Heading>
+
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
         zoom={8}
