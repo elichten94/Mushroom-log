@@ -13,7 +13,7 @@ const request = {
 
 
 
-  addSpecies: function() {
+  addSpecies: function(species) {
     return axios.post(BASE_URL + '/species', {
       species: species
     });

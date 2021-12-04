@@ -4,7 +4,9 @@ import React from 'react';
 const SpeciesList = (props) => {
   return (
     <div id="species-list">
-      {props.species.map(name => (<p>{name}</p>))}
+      {props.species.map((name, i) => (
+      <p key={i}>{name}</p>
+      ))}
     </div>
   )
 }

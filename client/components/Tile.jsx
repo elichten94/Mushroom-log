@@ -52,8 +52,10 @@ import SpeciesList from './SpeciesList.jsx';
   };
 
   const addPlace = (event) => {
+    console.log('tile state:', tile);
+
     event.preventDefault();
-    props.submitPlace(placeText)
+    props.submitPlace(tile.placeText)
     .then(() => {
       // wait for it to be sent to the database
       setFormView(!formView);
@@ -70,7 +72,7 @@ import SpeciesList from './SpeciesList.jsx';
       <div className="tile">
         <form>
           <input className="place" type="text" onChange={updatePlace} placeholder="My spot"/>
-          <input type="submit" onSubmit={addPlace}/>
+          <button onClick={addPlace}>Add place</button>
         </form>
       </div>
     );
@@ -82,8 +84,8 @@ import SpeciesList from './SpeciesList.jsx';
         <form>
           <p>{tile.placeText}</p>
           <input className="species" type="text" onChange={updateSpecies} placeholder="Species"/>
-          <input type="submit" onSubmit={addSpecies}/>
-          <SpeciesList species={species} />
+          <button onClick={addSpecies}>Add species</button>
+          <SpeciesList species={tile.species}/ >
         </form>
       </div>
     );
