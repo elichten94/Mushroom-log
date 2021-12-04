@@ -19,28 +19,13 @@ const center = {
 };
 
 
-const MapContainer = ({markers, addMarkers}) => {
-  // const { isLoaded, loadError } = useLoadScript({
-  //   googleMapsApiKey: API_KEY,
-  //   libraries
-  // });
+const MapContainer = ({markers, addMarkers, selected, setSelected}) => {
 
-
-  // if (loadError) {
-  //   return 'Error loading map :(';
-  // } else if (!isLoaded) {
-  //   return 'Loading Map...';
-  // }
-
-  // console.log('markers:', markers);
 
   const handleMapClick = (event) => {
     var lat = event.latLng.lat();
     var lng = event.latLng.lng();
 
-    // ** adds a new inset for the user to fill in **
-
-    // note - the props version just takes a new marker to add to state
     addMarkers(new Response({lat: lat, lng: lng}));
   };
 
@@ -59,8 +44,29 @@ const MapContainer = ({markers, addMarkers}) => {
             icon={{
               url: 'https://upload.wikimedia.org/wikipedia/commons/f/f7/Mushroom.svg',
               scaledSize: new window.google.maps.Size(30, 30)
-            }} />
+            }}
+            onClick={() => {
+              setSelected(marker);
+            }}
+            />
           ))}
+
+          {
+            selected ? (<InfoWindow position={{
+              lat: selected.coordinates.lat,
+              lng: selected.coordinates.lng
+              }}
+              onCloseClick={() => {
+                setSelected(null);
+              }}
+            >
+              <div>
+                Hello!
+              </div>
+            </InfoWindow>)
+            :
+            <></>
+          }
 
       </GoogleMap>
     </div>);

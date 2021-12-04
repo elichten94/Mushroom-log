@@ -25,12 +25,17 @@ import {
  * submitPlace (function)
  */
  const Tile = (props) => {
+var s_index = props.selected === null ? -1 : props.selected._index;
+
+
+
   var [tile, setTile] = React.useState({
     placeText: '',
     speciesText: '',
     species: props.marker.species,
     coordinates: props.marker.coordinates,
-    name: props.marker.name.length ? props.marker.name : ''
+    name: props.marker.name.length ? props.marker.name : '',
+    selected: props.marker._index === s_index
   });
 
   var [formView, setFormView] = React.useState(Boolean(!props.marker.name));

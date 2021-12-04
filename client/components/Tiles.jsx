@@ -20,6 +20,7 @@ const Tiles = (props) => {
           submitSpecies={props.tileProps.submitSpecies}
           submitPlace={props.tileProps.submitPlace}
           retriveMarkers={props.tileProps.retriveMarkers}
+          selected={props.tileProps.selected}
           />
         ))}
 
