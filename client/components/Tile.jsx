@@ -98,5 +98,4 @@ import SpeciesList from './SpeciesList.jsx';
   }
 };
 
-
 export default Tile;

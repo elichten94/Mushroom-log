@@ -19,13 +19,12 @@ const center = {
 };
 
 
-const MapContainer = (props) => {
+const MapContainer = ({markers, setMarkers}) => {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: API_KEY,
     libraries
   });
 
-  const [markers, setMarkers] = React.useState([]);
 
   if (loadError) {
     return 'Error loading map :(';
@@ -34,6 +33,20 @@ const MapContainer = (props) => {
   }
 
 
+  const handleMapClick = (event) => {
+    var lat = event.latLng.lat();
+    var lng = event.latLng.lng();
+
+    // ** adds a new inset for the user to fill in **
+    props.createInset(lat, lng);
+    setMarkers((oldState) => [
+      ...oldState,
+      {
+        lat: lat,
+        lng: lng
+      }])
+  };
+
   return (
     <div id="map-container">
       <h3>Scroll through the map to add your favorite spots!</h3>
@@ -41,15 +54,7 @@ const MapContainer = (props) => {
         mapContainerStyle={mapContainerStyle}
         zoom={8}
         center={center}
-        onClick={(event) => {
-          props.createInset;
-          setMarkers((oldState) => [
-            ...oldState,
-            {
-              lat: event.latLng.lat(),
-              lng: event.latLng.lng()
-            }])
-        }}
+        onClick={handleMapClick}
       >
         {markers.map((marker, i) => (
             <Marker key={i}
