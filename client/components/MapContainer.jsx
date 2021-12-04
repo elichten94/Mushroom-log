@@ -38,6 +38,7 @@ const MapContainer = ({markers, setMarkers}) => {
     console.log('event!');
     var lat = event.latLng.lat();
     var lng = event.latLng.lng();
+    console.log('coordinates: ', lat, lng);
 
     // ** adds a new inset for the user to fill in **
 

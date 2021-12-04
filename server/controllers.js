@@ -16,7 +16,7 @@ module.exports = {
   addPlaces: function(req, res) {
     console.log(req.body);
     // query database to insert and respond 201 on success
-    if (req.body.place === undefined) {
+    if (!req.body.place || !req.body.lat || !req.body.lng) {
       res.status(400).send('Bad request: need `place` query parameter');
     } else {
       models.insertPlace(req.body)

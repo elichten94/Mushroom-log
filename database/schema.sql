@@ -10,11 +10,11 @@ CREATE TABLE types (
   PRIMARY KEY(id)
 );
 
-
 CREATE TABLE places (
   id INT NOT NULL AUTO_INCREMENT,
  `name` VARCHAR(100) NOT NULL,
--- techdebt: coordinates VARCHAR(100)
+ lat DECIMAL(18, 15),
+ lng DECIMAL(18, 15),
 
  PRIMARY KEY(id)
 );
@@ -46,11 +46,11 @@ INSERT INTO types (name)
     ('fungi'),
     ('plant');
 
-INSERT INTO places (name)
+INSERT INTO places (name, lat, lng)
   VALUES
-    ('peters rock park'),
-    ('north farms park'),
-    ('somme woods');
+    ('Presidio', 37.79032991926543, -122.46569269829364),
+    ('Golden Gate', 37.770946373962055, -122.48292118407657),
+    ('Elk Glen', 37.767754870162044, -122.48068188610866);
 
 INSERT INTO species (name, type_id)
   VALUES

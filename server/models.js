@@ -17,15 +17,15 @@ module.exports = {
 
   },
 
-  insertPlace: function({ place }) {
+  insertPlace: function({ place, lat, lng }) {
     // insert a place to the database
 
 
     var sqlQuery = `
-      INSERT INTO places (name)
-      VALUES (?)`;
+      INSERT INTO places (name, lat, lng)
+      VALUES (?, ?, ?)`;
 
-      return pool.query(sqlQuery, [place]);
+      return pool.query(sqlQuery, [place, lat, lng]);
 
   },
 
