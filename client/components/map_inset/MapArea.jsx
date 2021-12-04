@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapContainer } from './MapContainer.jsx';
+import MapContainer from './MapContainer.jsx';
 
 const MapArea = () => {
   return (
