@@ -1,9 +1,10 @@
 import React from 'react';
 
-const SpeciesList = () => {
+//EXPECTED PROPS: species (array of strings)
+const SpeciesList = (props) => {
   return (
-    <div>
-
+    <div id="species-list">
+      {props.species.map(name => (<p>{name}</p>))}
     </div>
   )
 }

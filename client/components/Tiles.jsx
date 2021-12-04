@@ -6,7 +6,6 @@ const Tiles = (props) => {
   xprops.locations = ['san fran', 'chitown', 'nycdump'];
   return (
     <div id="tiles">
-      TILES GOES HERE
       {xprops.locations.map(location => (
         <Tile location={location} />
       ))}

@@ -1,12 +1,22 @@
 import React from 'react';
 import SpeciesList from './SpeciesList.jsx';
 
+//TECHDEBT: refactor this to render exisiting data as well as serving as a new form
 
 
-const Tile = (props) => {
+// EXPECTED PROPS:
+/**
+ * species (array)
+ * submitSpecies (function)
+ * submitPlace (function)
+ */
+ const Tile = (props) => {
+
+  // state of form entered
   var [tile, setTile] = React.useState({
-    place: '',
-    species: []
+    placeText: '',
+    speciesText: '',
+    species: props.species //array
   });
 
   // formview just determines the display before and after entering the location
@@ -14,39 +24,70 @@ const Tile = (props) => {
 
 
   const updatePlace = (event) => {
+    setTile({
+      placeText: event.target.value
+    });
+  };
 
-
-  }
   const updateSpecies = (event) => {
+    setTile({
+      speciesText: event.target.value
+    });
+  };
 
-  }
+  const addSpecies = (event) => {
+    event.preventDefault();
+
+    props.submitSpecies(speciesText)
+      .then(() => {
+        var newSpecies = [...tile.species].push(speciesText)
+        setTile({
+          species: newSpecies
+        });
+      })
+      .catch((err) => {
+        throw err;
+      })
+  };
+
+  const addPlace = (event) => {
+    event.preventDefault();
+    props.submitPlace(placeText)
+    .then(() => {
+      // wait for it to be sent to the database
+      setFormView(!formView);
+    })
+    .catch((err) => {
+      throw err;
+    });
+  };
 
 
   if (formView) {
-
     // return a prompt for location
-    return
+    return (
+      <div className="tile">
+        <form>
+          <input className="place" type="text" onChange={updatePlace} placeholder="My spot"/>
+          <input type="submit" onSubmit={addPlace}/>
+        </form>
+      </div>
+    );
   } else {
     // make the entered location the title
     // give a prompt for species
-    <div className="tile">
-    <form>
-      <input className="place" type="text" onChange={updateText} placeholder="My spot"/>
-    </form>
-
-  </div>
     return (
-      <div id="tile">
+      <div className="tile">
         <form>
-          <p>{tile.place}</p>
-          <input className="species" type="text" onChange={updateText} placeholder="Species"/>
-          <SpeciesList species={props.species} />
+          <p>{tile.placeText}</p>
+          <input className="species" type="text" onChange={updateSpecies} placeholder="Species"/>
+          <input type="submit" onSubmit={addSpecies}/>
+          <SpeciesList species={species} />
         </form>
-
       </div>
-    )
+    );
   }
-
 };
+
 
 export default Tile;
