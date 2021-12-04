@@ -1,5 +1,6 @@
 import API_KEY from '../../googleConfig.js';
 import React from 'react';
+import MarkerWithData from '../MarkerWithData.js';
 import { GoogleMap,
   useLoadScript,
   Marker,
@@ -34,17 +35,14 @@ const MapContainer = ({markers, setMarkers}) => {
 
 
   const handleMapClick = (event) => {
+    console.log('event!');
     var lat = event.latLng.lat();
     var lng = event.latLng.lng();
 
     // ** adds a new inset for the user to fill in **
-    props.createInset(lat, lng);
-    setMarkers((oldState) => [
-      ...oldState,
-      {
-        lat: lat,
-        lng: lng
-      }])
+
+    // note - the props version just takes a new marker to add to state
+    setMarkers(new MarkerWithData(lat, lng));
   };
 
   return (

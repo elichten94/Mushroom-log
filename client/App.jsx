@@ -4,7 +4,7 @@ import MapContainer from './components/MapContainer.jsx';
 import Tiles from './components/Tiles.jsx';
 import './style.scss';
 import request from './request.js';
-import Marker from './Marker.js';
+import MarkerWithData from './MarkerWithData.js';
 
 // const createInset = (lat, lng) => {
 //   console.log(lat, lng);
@@ -47,30 +47,35 @@ class App extends React.Component {
     this.state = {
       markers: []
     };
+
+    this.setMarkers = this.setMarkers.bind(this);
   }
 
 
   componentDidMount() {
-
+    // get all data here
+    // make a new
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps, prevState) {
 
   }
 
   setMarkers(newMarker) {
+
     var stateCopy = [...this.state.markers]
     stateCopy.push(newMarker);
-    this.setState(stateCopy);
+    this.setState({
+      markers: stateCopy
+    });
   }
-
 
 
   render() {
     return (
       <div id="main-block">
         <Header />
-        <MapContainer createInset={createInset} markers={markers} setMarkers={setMarkers}/>
+        <MapContainer markers={this.state.markers} setMarkers={this.setMarkers}/>
         <h3 id="tile-banner">My spots:</h3>
         <Tiles tileProps={allProps.tileProps}/>
       </div>

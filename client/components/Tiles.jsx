@@ -22,25 +22,27 @@ const Tiles = (props) => {
 export default Tiles;
 
 
-/* formato of api response
+/* format of api response
   {
-    location: {
+    somelocation: {
       name: chitown
       species: [
         'bunny', 'goose', 'foxxo'
-      ]
+      ],
+      coordinates: {
+        lat: 23423
+        lng: 123231
+      }
     },
-      location: {
+     somelocation: {
       name: chitown
       species: [
         'bunny', 'goose', 'foxxo'
-      ]
-    },
-      location: {
-      name: chitown
-      species: [
-        'bunny', 'goose', 'foxxo'
-      ]
+      ],
+        coordinates: {
+        lat: 23423
+        lng: 123231
+      }
     }
 }
  */
