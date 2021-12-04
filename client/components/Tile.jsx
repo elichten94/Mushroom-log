@@ -25,14 +25,14 @@ import {
  * submitPlace (function)
  */
  const Tile = (props) => {
-
+console.log('props marker name:', props.marker.name);
   // state of form entered
   var [tile, setTile] = React.useState({
     placeText: '',
     speciesText: '',
     species: props.marker.species,
     coordinates: props.marker.coordinates,
-    name: props.marker.name
+    name: props.marker.name.length ? props.marker.name : ''
   });
 
   console.log('PROPS:', props);
@@ -84,23 +84,33 @@ import {
   };
 
   const addPlace = (event) => {
-
-    xconsole.log('placetext: ', tile.placetext);
+    var nameToAdd = tile.placeText;
+    console.log('PLACE ENTERED: ', tile.placeText);
     event.preventDefault();
     if (!tile.placeText.length) {
       alert('Please enter a place!');
       return;
     }
+    // tile.place = tile.placeText;
+
+
     props.submitPlace({
-      place: tile.placeText,
+      place: nameToAdd,
       lat: tile.coordinates.lat,
       lng: tile.coordinates.lng
     })
     .then(() => {
       // wait for it to be sent to the database
+
+      setTile({
+        ...tile,
+        name: nameToAdd
+      });
       setFormView(!formView);
       // NEED TO SET STATE GLOBAL AGAIN
-      props.retriveMarkers([]);
+      // props.retriveMarkers([]);
+
+
     })
     .catch((err) => {
       throw err;

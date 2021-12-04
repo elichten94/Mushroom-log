@@ -38,7 +38,7 @@ module.exports = {
       SET @species_id_to_use = LAST_INSERT_ID();
       INSERT INTO places_species
         VALUES (
-          (SELECT id FROM places where places.name = ?),
+          (SELECT id FROM places where places.name = ? LIMIT 1),
           @species_id_to_use);
       COMMIT;`;
 
