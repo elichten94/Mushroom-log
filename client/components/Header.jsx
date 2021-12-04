@@ -7,6 +7,9 @@ const Header = (props) => {
         <h1 id="title">The Mushroom Log</h1>
         <img id="header-img" src={require("./mushroom-svgrepo-com.svg")} alt="morel.jpeg"/>
       </div>
+      <div id="subheader">
+        <h2>A forager's diary</h2>
+      </div>
     </div>
   );
 };

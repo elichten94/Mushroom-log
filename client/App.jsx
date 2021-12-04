@@ -2,7 +2,7 @@ import React from 'react';
 import Header from './components/Header.jsx';
 import MapContainer from './components/MapContainer.jsx';
 import Tiles from './components/Tiles.jsx';
-import './style.css';
+import './style.scss';
 
 const App = () => {
 
