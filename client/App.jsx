@@ -4,7 +4,7 @@ import MapContainer from './components/MapContainer.jsx';
 import Tiles from './components/Tiles.jsx';
 import './style.scss';
 import request from './request.js';
-import MarkerWithData from './MarkerWithData.js';
+const Response = require('../server/Response.js');
 
 // const createInset = (lat, lng) => {
 //   console.log(lat, lng);

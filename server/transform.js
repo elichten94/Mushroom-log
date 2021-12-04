@@ -1,12 +1,4 @@
-var Response = function(og) {
-  this.name = og.place;
-  this.species = Array.isArray(og.species) ? og.species : [og.species];
-  this.coordinates = {
-    lat: Number(og.lat),
-    lng: Number(og.lng)
-  };
-};
-
+const Response = require('./Response.js');
 const transform = {
   shapeData: function(queryRows) {
     var length = queryRows.length;

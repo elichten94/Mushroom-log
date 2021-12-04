@@ -1,9 +1,10 @@
 import React from 'react';
-import MarkerWithData from '../MarkerWithData.js';
 import { GoogleMap,
   Marker,
   InfoWindow
 } from '@react-google-maps/api';
+const Response = require('../../server/Response.js');
+
 
 
 // const libraries = ['places'];
@@ -42,7 +43,7 @@ const MapContainer = ({markers, setMarkers}) => {
     // ** adds a new inset for the user to fill in **
 
     // note - the props version just takes a new marker to add to state
-    setMarkers(new MarkerWithData(lat, lng));
+    setMarkers(new Response({lat: lat, lng: lng}));
   };
 
   return (
