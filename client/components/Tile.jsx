@@ -6,6 +6,7 @@ import SpeciesList from './SpeciesList.jsx';
 
 // EXPECTED PROPS:
 /**
+ * place (string)
  * species (array)
  * submitSpecies (function)
  * submitPlace (function)
@@ -16,7 +17,8 @@ import SpeciesList from './SpeciesList.jsx';
   var [tile, setTile] = React.useState({
     placeText: '',
     speciesText: '',
-    species: props.species //array
+    // later - species: props.species //array
+    species: []
   });
 
   // formview just determines the display before and after entering the location
@@ -37,7 +39,6 @@ import SpeciesList from './SpeciesList.jsx';
 
   const addSpecies = (event) => {
     event.preventDefault();
-
     props.submitSpecies(speciesText)
       .then(() => {
         var newSpecies = [...tile.species].push(speciesText)

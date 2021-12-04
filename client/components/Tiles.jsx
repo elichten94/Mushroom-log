@@ -1,13 +1,13 @@
 import React from 'react';
 import Tile from './Tile.jsx';
 
+// EXPECTED PROPS: places (array of strings)
 const Tiles = (props) => {
-  var xprops = {}
-  xprops.locations = ['san fran', 'chitown', 'nycdump'];
+  var places = Object.keys(props.placesToSpecies);
   return (
     <div id="tiles">
-      {xprops.locations.map(location => (
-        <Tile location={location} />
+      {places.map(place => (
+        <Tile place={place} species={props.placesToSpecies[place]} />
       ))}
     </div>
   );
