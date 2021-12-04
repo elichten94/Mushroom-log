@@ -20,6 +20,8 @@ module.exports = {
     // insert a place to the database
     console.log('calling mysql from insertPlace');
 
+    console.log('HENLO');
+
     var sqlQuery = `
       INSERT INTO places (name, lat, lng)
       VALUES (?, ?, ?)`;

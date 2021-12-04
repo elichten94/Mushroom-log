@@ -27,12 +27,13 @@ import {
  * submitPlace (function)
  */
  const Tile = (props) => {
-
+console.log('PROPS IN TILE:', props);
   // state of form entered
   var [tile, setTile] = React.useState({
     placeText: '',
     speciesText: '',
-    species: props.marker.species
+    species: props.marker.species,
+    coordinates: props.marker.coordinates
 
   });
 
@@ -93,9 +94,9 @@ import {
       alert('Please enter a place!');
     }
     props.submitPlace({
-      name: tile.placeText,
-      lat: props.marker.lat,
-      long: props.marker.lng
+      place: tile.placeText,
+      lat: tile.coordinates.lat,
+      lng: tile.coordinates.lng
     })
     .then(() => {
       // wait for it to be sent to the database

@@ -1,5 +1,5 @@
 var Response = function(og) {
-  console.log('IN RESPONSE: PASSED IN', og);
+
 
   this.name = og.place || '';
   if ( Array.isArray(og.species)) {
@@ -12,9 +12,7 @@ var Response = function(og) {
     lng: Number(og.lng)
   };
 
-  console.log(
-    'value being returned from response: ', this
-  )
+
 };
 
 module.exports = Response;

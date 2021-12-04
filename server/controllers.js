@@ -19,7 +19,7 @@ module.exports = {
     console.log(req.body);
     // query database to insert and respond 201 on success
     if (!req.body.place || !req.body.lat || !req.body.lng) {
-      res.status(400).send('Bad request: need `place` query parameter');
+      res.status(400).send(new Error('Bad request: need all query parameters'));
     } else {
       models.insertPlace(req.body)
       .then(([rows, fields]) => {
