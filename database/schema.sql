@@ -3,12 +3,12 @@ CREATE DATABASE mushroom_log;
 USE mushroom_log;
 
 
-CREATE TABLE types (
-  id INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(20) UNIQUE NOT NULL,
+-- CREATE TABLE types (
+--   id INT NOT NULL AUTO_INCREMENT,
+--   `name` VARCHAR(20) UNIQUE NOT NULL,
 
-  PRIMARY KEY(id)
-);
+--   PRIMARY KEY(id)
+-- );
 
 CREATE TABLE places (
   id INT NOT NULL AUTO_INCREMENT,
@@ -38,10 +38,10 @@ CREATE TABLE places_species (
 );
 
 -- prepopulate
-INSERT INTO types (name)
-  VALUES
-    ('fungi'),
-    ('plant');
+-- INSERT INTO types (name)
+--   VALUES
+--     ('fungi'),
+--     ('plant');
 
 INSERT INTO places (name, lat, lng)
   VALUES
