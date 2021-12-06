@@ -23,7 +23,7 @@ module.exports = {
     } else {
       models.insertPlace(req.body)
       .then(([rows, fields]) => {
-        res.status(200).send('added a place');
+        res.status(201).send('added a place');
       })
       .catch((err) => {
         console.log('error adding a place', err);
@@ -44,12 +44,31 @@ module.exports = {
     } else {
       models.insertSpecies(req.body)
       .then(([rows, fields]) => {
-        res.status(200).send('added a species');
+        res.status(201).send('added a species');
       })
       .catch((err) => {
         console.log('error adding a species', err);
         res.status(400).send(err);
       });
+    }
+  },
+
+  addDescription: function(req, res) {
+    // add the description on the req body
+    var { name, place, description } = req.body
+    if (!name || !place || !description) {
+      console.log('missing body param');
+      res.status(400).send('Bad request - missing body parameters');
+    } else {
+      models.updateDecription(req.body)
+        .then(([rows, fields]) => {
+
+          res.status(201).send('Added description - soon ill respond with the updated row!');
+        })
+        .catch((err) => {
+          console.log('error adding a description');
+          res.status(500).send('server error adding description');
+        })
     }
   }
 

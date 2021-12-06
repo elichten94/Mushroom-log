@@ -19,6 +19,8 @@ app.post('/places', controllers.addPlaces);
 
 app.post('/species', controllers.addSpecies);
 
+app.post('/descriptions', controllers.addDescription);
+
 
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);

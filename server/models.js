@@ -44,27 +44,21 @@ module.exports = {
 
     return pool.query(sqlQuery, [name, place]);
 
+  },
+
+  updateDecription({ name, place, description }) {
+    // (3, 4, '');
+    // 'Elk Glen', 'wild garlic'
+    // should add the description to the database and then give that row back
+    var sqlQuery = `
+      UPDATE places_species SET description = ?
+      WHERE place_id =
+        (SELECT id FROM places WHERE name = ?)
+      AND
+      species_id =
+        (SELECT id FROM species WHERE name = ?);`;
+    return pool.query(sqlQuery, [description, place, name]);
+
   }
 
 };
-
-// client receives:
-/*
-  {
-    results: [
-      {
-        place:
-        species:
-      }
-      {
-        place:
-        species:
-      }
-      {
-        place:
-        species:
-      }
-    ]
-  }
-
-*/
