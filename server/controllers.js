@@ -61,13 +61,12 @@ module.exports = {
       res.status(400).send('Bad request - missing body parameters');
     } else {
       models.updateDecription(req.body)
-        .then(([rows, fields]) => {
-
-          res.status(201).send('Added description - soon ill respond with the updated row!');
+        .then(() => {
+          res.status(201).send('Added description!');
         })
         .catch((err) => {
           console.log('error adding a description');
-          res.status(500).send('server error adding description');
+          res.status(500).send('Error adding description');
         })
     }
   }

@@ -4,7 +4,7 @@ module.exports = {
   selectAll: function() {
     // select all observations from db
     var sqlQuery = `
-      SELECT places.name AS place, species.name AS species, places.lat, places.lng
+      SELECT places.name AS place, species.name AS species, places.lat, places.lng, places_species.description AS description
       FROM places
       INNER JOIN places_species ON
       places_species.place_id = places.id
@@ -49,7 +49,7 @@ module.exports = {
   updateDecription({ name, place, description }) {
     // (3, 4, '');
     // 'Elk Glen', 'wild garlic'
-    // should add the description to the database and then give that row back
+    // should add the description to the database
     var sqlQuery = `
       UPDATE places_species SET description = ?
       WHERE place_id =

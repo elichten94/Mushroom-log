@@ -23,7 +23,8 @@ const transform = {
         if (current === next) {
           b++;
         } else {
-          groups.push(queryRows[b]);
+          // still wrap it as an array
+          groups.push([queryRows[b]]);
           a++;
           b++;
         }
@@ -44,16 +45,13 @@ const transform = {
 
     var species;
     for (item of groupedData) {
-      // if an array,
-      if (Array.isArray(item)) {
-        // it's a group
-        // compile all species
-        aggSpecies = item.map(obj => obj.species);
+
+        aggSpecies = item.map(obj => (
+          {species: obj.species, description: obj.description}
+        ));
         item[0].species = aggSpecies;
         formatted.push(new Response(item[0]));
-      } else {
-        formatted.push(new Response(item));
-      }
+
     }
     // out: formatted response
     return formatted;

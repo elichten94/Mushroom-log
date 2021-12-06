@@ -29,6 +29,7 @@ const Inset = ({ speciesName, place, insetText }) => {
 
   const handleInsetAdd = (event) => {
     // later: submit to server, THEN do the following:
+
     setInsetState({
       ...insetState,
       displayText: insetState.editText,
