@@ -22,6 +22,8 @@ const Tiles = (props) => {
           submitPlace={props.tileProps.submitPlace}
           retriveMarkers={props.tileProps.retriveMarkers}
           selected={props.tileProps.selected}
+          fetchAndRerender={props.tileProps.fetchAndRerender}
+          submitDescription={props.tileProps.submitDescription}
           />
         ))}
 

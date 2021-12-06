@@ -9,7 +9,7 @@ import { TextField } from '@material-ui/core';
 
 
 // insetText prop would be what the server gave us
-const Inset = ({ speciesName, place, insetText }) => {
+const Inset = ({ speciesName, place, insetText, fetchAndRerender, submitDescription }) => {
   // should allow the user to save info on their overservation (techdebt: add photo upload)
 
   // if an inset exists for this observation we render the text view, otherwise an edit form
@@ -27,17 +27,41 @@ const Inset = ({ speciesName, place, insetText }) => {
   });
 
 
+
+
+
+
+  console.log(
+    'RECEIVED INSET TEXT:', insetText
+  );
   const handleInsetAdd = (event) => {
     // later: submit to server, THEN do the following:
 
     if (insetState.editText.length) {
 
+      // make an api call to add the item to the db
+      submitDescription(speciesName, place, insetState.editText)
+        // NOTE - commented this out because new props were not reflecting the updated data for some reason,
+        // however, data is being logged and the updated component appears on refresh and close/open inset
+      // .then(() => {
+      //     //all good :)
+      //     console.log('added description');
+      //     return fetchAndRerender('refresh');
+      //   })
+        .then(() => {
+          // console.log('recieved INSET TEXT LENGTH (DESCRIPTION) PROP:', insetText.length)
 
-      setInsetState({
-        ...insetState,
-        displayText: insetState.editText,
-        editMode: !insetState.editMode
-      });
+          setInsetState({
+            ...insetState,
+            displayText: insetState.editText,
+            editMode: !insetState.editMode
+          });
+        })
+        .catch((err) => {
+          console.log('error adding description or updating app');
+          throw err;
+        });
+
     }
   };
 

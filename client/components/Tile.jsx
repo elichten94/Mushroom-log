@@ -58,19 +58,21 @@ const Tile = (props) => {
   const addSpecies = (event) => {
     event.preventDefault();
 
-    var x = props.input_id;
-    console.log('got the key:', props.input_id);
-    //clear input field
-    document.getElementById(tile.input_id).value = '';
     if (!tile.speciesText.length) {
       alert('Please enter a species!');
       return;
     }
 
-
+    //clear input field
+    document.getElementById(tile.input_id).value = '';
 
     props.submitSpecies(tile.speciesText, tile.name)
       .then(() => {
+        return props.fetchAndRerender('refresh');
+      })
+
+      .then(() => {
+        console.log('props after RELOAD: ', props)
         var newSpecies = [...tile.species];
         newSpecies.push({species: tile.speciesText, description: ''})
 
@@ -78,6 +80,8 @@ const Tile = (props) => {
           ...tile,
           species: newSpecies
         });
+
+
       })
       .catch((err) => {
         console.error('errant request -Elliot')
@@ -135,7 +139,11 @@ const Tile = (props) => {
               <Input id={tile.input_id} type='text' onChange={updateSpecies} placeholder='Enter a species' />
               <Button className="form-button" colorScheme='green' onClick={addSpecies} size="md">Add </Button>
             </FormControl>
-            <SpeciesList species={tile.species} place={tile.name}/ >
+            <SpeciesList species={tile.species}
+              place={tile.name}
+              fetchAndRerender={props.fetchAndRerender}
+              submitDescription={props.submitDescription}
+              />
           </div>
 
     );

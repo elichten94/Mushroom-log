@@ -19,58 +19,53 @@ class App extends React.Component {
 
     this.addMarkers = this.addMarkers.bind(this);
     this.setSelected = this.setSelected.bind(this);
+    this.fetchAndRerender = this.fetchAndRerender.bind(this);
   }
 
-
-  componentDidMount() {
-    // get all data here
-    // make a new request
-    // on success set state
+  fetchAndRerender(refresh) {
     var addMarkers = this.addMarkers;
-
-    request.getAll()
+    return request.getAll()
       .then(({ data }) => {
+        console.log('DATA RECIEVED ON REFRESH: ', data);
 
-        addMarkers(data);
+        addMarkers(data, refresh);
       })
       .catch((err) => {
         throw err;
       })
-
   }
 
-  // componenetDidUpdate(prevProps, prevState) {
-  //   if (JSON.stringify(prevState) !== JSON.stringify(this.state)) {
-  //     var addMarkers = this.addMarkers;
-  //     request.getAll()
-  //     .then(({ data }) => {
-  //       console.log(data);
-  //       addMarkers(data);
-  //     })
-  //     .catch((err) => {
-  //       throw err;
-  //     })
+  componentDidMount() {
+    this.fetchAndRerender()
+  }
 
-  //   }
-  // }
+  addMarkers(newMarkers, refresh) {
 
-  addMarkers(newMarkers) {
-    // can be a single marker or array of markers from an api call
-    var stateCopy = [...this.state.markers]
-    if (Array.isArray(newMarkers)) {
-      stateCopy = stateCopy.concat(newMarkers);
+    if (refresh) {
+      // set state only with the new markers
+      console.log('OK IM RESETTING TO NEW AND UPDATED MARKERS!', newMarkers);
+      this.setState({
+        markers: newMarkers
+      });
     } else {
-      stateCopy.push(newMarkers);
+        // can be a single marker or array of markers from an api call
+      var stateCopy = [...this.state.markers]
+      if (Array.isArray(newMarkers)) {
+        stateCopy = stateCopy.concat(newMarkers);
+      } else {
+        stateCopy.push(newMarkers);
+      }
+
+      // assign indexes for selecting
+      stateCopy.forEach((marker, i )=> {
+        marker._index = i;
+      })
+
+      this.setState({
+        markers: stateCopy
+      });
     }
 
-    // assign indexes for selecting
-    stateCopy.forEach((marker, i )=> {
-      marker._index = i;
-    })
-
-    this.setState({
-      markers: stateCopy
-    });
   }
 
 
@@ -85,7 +80,9 @@ class App extends React.Component {
     var tileProps = {
       submitSpecies: request.addSpecies,
       submitPlace: request.addPlace,
+      submitDescription: request.addDescription,
       retriveMarkers: this.addMarkers,
+      fetchAndRerender: this.fetchAndRerender,
       markers: this.state.markers,
       selected: this.state.selected
     }
