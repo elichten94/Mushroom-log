@@ -31,6 +31,7 @@ const Tile = (props) => {
   var [tile, setTile] = React.useState({
     placeText: '',
     speciesText: '',
+    // an array of objects
     species: props.marker.species,
     coordinates: props.marker.coordinates,
     name: props.marker.name.length ? props.marker.name : '',
@@ -71,7 +72,7 @@ const Tile = (props) => {
     props.submitSpecies(tile.speciesText, tile.name)
       .then(() => {
         var newSpecies = [...tile.species];
-        newSpecies.push(tile.speciesText);
+        newSpecies.push({species: tile.speciesText, description: ''})
 
         setTile({
           ...tile,

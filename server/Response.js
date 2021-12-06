@@ -5,8 +5,6 @@ var Response = function(og) {
     lat: Number(og.lat),
     lng: Number(og.lng)
   };
-
-
 };
 
 module.exports = Response;

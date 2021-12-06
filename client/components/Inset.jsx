@@ -22,7 +22,7 @@ const Inset = ({ speciesName, place, insetText }) => {
 
   var [insetState, setInsetState] = React.useState({
     editText: '',
-    displayText: insetText || '',
+    displayText: insetText,
     editMode: Boolean(!(insetText.length))
   });
 
@@ -30,12 +30,15 @@ const Inset = ({ speciesName, place, insetText }) => {
   const handleInsetAdd = (event) => {
     // later: submit to server, THEN do the following:
 
-    setInsetState({
-      ...insetState,
-      displayText: insetState.editText,
-      editMode: !insetState.editMode
-    });
+    if (insetState.editText.length) {
 
+
+      setInsetState({
+        ...insetState,
+        displayText: insetState.editText,
+        editMode: !insetState.editMode
+      });
+    }
   };
 
   const handleEdit = (event) => {
@@ -52,7 +55,7 @@ const Inset = ({ speciesName, place, insetText }) => {
   return (
 
     <div>
-      <FormControl id='email'>
+      <FormControl>
         <textarea
           onChange={handleEdit}
           className="observations"

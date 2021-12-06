@@ -6,8 +6,8 @@ import ListItem from './ListItem.jsx';
 const SpeciesList = (props) => {
   return (
     <div id="species-list">
-      {props.species.map((speciesName, i) => (
-        <ListItem key={i} speciesName={speciesName} place={props.place}/>
+      {props.species.map((speciesObj, i) => (
+        <ListItem key={i} speciesObj={speciesObj} place={props.place}/>
       ))}
     </div>
   )
