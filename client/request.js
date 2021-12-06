@@ -20,7 +20,13 @@ const request = {
     });
   },
 
-
+  addDescription: function(species, place, description) {
+    return axios.post(BASE_URL + '/descriptions', {
+      name: species,
+      place: place,
+      description: description
+    });
+  },
 
   addSpecies: function(species, place) {
 

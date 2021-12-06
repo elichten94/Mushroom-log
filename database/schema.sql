@@ -30,6 +30,7 @@ CREATE TABLE species (
 CREATE TABLE places_species (
   place_id INT NOT NULL,
   species_id INT NOT NULL,
+  `description`: VARCHAR(500) DEFAULT '',
 
   FOREIGN KEY(place_id)
     REFERENCES places(id),
@@ -58,9 +59,9 @@ INSERT INTO species (name)
 
 INSERT INTO places_species
   VALUES
-    (1, 1),
+    (1, 1, 'scattered under douglas fir. About 6 feet from base of trunk'),
     (1, 2),
-    (2, 3),
+    (2, 3 'Huge patch!! Taking taking Khai here next time oWo'),
     (2, 1),
     (3, 4);
 

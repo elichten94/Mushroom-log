@@ -25,7 +25,7 @@ import {
  * submitPlace (function)
  */
 const Tile = (props) => {
-  var rand = Math.random();
+
   var s_index = props.selected === null ? -1 : props.selected._index;
 
   var [tile, setTile] = React.useState({
@@ -35,7 +35,7 @@ const Tile = (props) => {
     coordinates: props.marker.coordinates,
     name: props.marker.name.length ? props.marker.name : '',
     selected: props.marker._index === s_index,
-    rand: rand
+    input_id: props.input_id
   });
 
   var [formView, setFormView] = React.useState(Boolean(!props.marker.name));
@@ -57,8 +57,10 @@ const Tile = (props) => {
   const addSpecies = (event) => {
     event.preventDefault();
 
+    var x = props.input_id;
+    console.log('got the key:', props.input_id);
     //clear input field
-    document.getElementById(tile.rand.toString()).value = '';
+    document.getElementById(tile.input_id).value = '';
     if (!tile.speciesText.length) {
       alert('Please enter a species!');
       return;
@@ -129,7 +131,7 @@ const Tile = (props) => {
               {placeHeading}
             </Heading>
             <FormControl className='add-species-form'>
-              <Input id={tile.rand.toString()} type='text' onChange={updateSpecies} placeholder='Enter a species' />
+              <Input id={tile.input_id} type='text' onChange={updateSpecies} placeholder='Enter a species' />
               <Button className="form-button" colorScheme='green' onClick={addSpecies} size="md">Add </Button>
             </FormControl>
             <SpeciesList species={tile.species} place={tile.name}/ >

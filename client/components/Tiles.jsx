@@ -16,6 +16,7 @@ const Tiles = (props) => {
         {props.tileProps.markers.map((marker, i) => (
           <Tile
           key={i}
+          input_id={i}
           marker={marker}
           submitSpecies={props.tileProps.submitSpecies}
           submitPlace={props.tileProps.submitPlace}
