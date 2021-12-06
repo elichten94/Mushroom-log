@@ -8,6 +8,9 @@ const Header = (props) => {
           The Mushroom Log
         </Heading>
         <img id="header-img" src={require("./mushroom-svgrepo-com.svg")} alt="morel.jpeg"/>
+        <Heading as="h3" id="map-banner">
+          Scroll through the map to add your favorite spots!
+        </Heading>
     </div>
   );
 };

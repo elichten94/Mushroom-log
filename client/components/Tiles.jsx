@@ -1,6 +1,6 @@
 import React from 'react';
 import Tile from './Tile.jsx';
-import { Flex, Spacer } from '@chakra-ui/react';
+import { Flex, Spacer, Heading } from '@chakra-ui/react';
 
 /**
  * Props:
@@ -11,7 +11,13 @@ import { Flex, Spacer } from '@chakra-ui/react';
 
 const Tiles = (props) => {
   return (
+<div id="lower-block">
+    <Heading id="tile-banner" as="h3" >
+    My spots:
+  </Heading>
+  <hr/>
     <div id="tiles">
+
 
         {props.tileProps.markers.map((marker, i) => (
           <Tile
@@ -28,7 +34,7 @@ const Tiles = (props) => {
         ))}
 
       </div>
-
+</div>
 
 
   );

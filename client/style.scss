@@ -1,21 +1,27 @@
 
 #top-block {
-  margin: 0.5em;
+  padding: 0.5em;
   display: flex;
   flex-direction: column;
   align-content: center;
+  background-color: #08e1ae;
+  background-image: linear-gradient(315deg, #08e1ae 0%, #a1da70 74%);
 }
 
-#map-banner, #title {
+#map-banner, #title, #tile-banner {
   text-align: center;
+  text-shadow: 1px 1px 1px;
   color: brown;
   font-family: "Comic Sans MS", cursive, sans-serif;
-  margin: 20px;
+  padding: 30px;
 }
 
 #title {
-  color: darkgoldenrod;
-  text-shadow: 1px 1px 1px;
+  color: darkgreen;
+}
+
+#tile-banner {
+  color: rgba(0, 0, 0, 0.548)
 }
 
 
@@ -24,18 +30,22 @@
   height: 100px;
 }
 
+#lower-block {
+  background-color: #08e1ae;
+  background-image: linear-gradient(225deg, #08e1ae 0%, #a1da70 74%);
+}
+
 #tiles {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   flex-wrap: wrap;
   font-family: "Comic Sans MS", cursive, sans-serif;
+
+
 }
 
-#tile-banner {
-  text-align: center;
-  margin: 20px;
-}
+
 
 .tile {
   border: 1px solid black;
@@ -61,6 +71,7 @@
   margin: 0.5em
 }
 
+
 .species-entry {
   display: flex;
   justify-content: space-between;
@@ -71,8 +82,9 @@
 }
 
 .observation-inset {
-  margin: 1em;
+  margin: 0.5em;
   padding: 1em;
+  width: 300px;
   background-color: rgb(253, 204, 113);
   border: 1px solid black;
   border-radius: 8px;

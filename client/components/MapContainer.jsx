@@ -32,9 +32,7 @@ const MapContainer = ({markers, addMarkers, selected, setSelected}) => {
 
   return (
     <div id="map-container">
-      <Heading as="h3" id="map-banner">
-        Scroll through the map to add your favorite spots!
-      </Heading>
+
 
       <GoogleMap
         mapContainerStyle={mapContainerStyle}

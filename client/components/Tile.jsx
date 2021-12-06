@@ -121,7 +121,7 @@ const Tile = (props) => {
     return (
       <div className="tile">
         <FormControl className='add-place-form'>
-          <Input type='text' onChange={updatePlace} placeholder='Describe the place' />
+          <Input type='text' className="tile-input" onChange={updatePlace} placeholder='Describe the place' />
           <Button className="form-button" colorScheme='blue' onClick={addPlace} size="md">Add </Button>
         </FormControl>
       </div>
@@ -136,7 +136,7 @@ const Tile = (props) => {
               {placeHeading}
             </Heading>
             <FormControl className='add-species-form'>
-              <Input id={tile.input_id} type='text' onChange={updateSpecies} placeholder='Enter a species' />
+              <Input id={tile.input_id} className="tile-input" type='text' onChange={updateSpecies} placeholder='Enter a species' />
               <Button className="form-button" colorScheme='green' onClick={addSpecies} size="md">Add </Button>
             </FormControl>
             <SpeciesList species={tile.species}
