@@ -1,4 +1,6 @@
 
+
+
 #top-block {
   padding: 0.5em;
   display: flex;
@@ -28,6 +30,12 @@
 #header-img {
   display: block;
   height: 100px;
+}
+
+
+#map-container {
+  display: flex;
+  justify-content: space-between;
 }
 
 #lower-block {

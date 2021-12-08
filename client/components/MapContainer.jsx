@@ -6,13 +6,20 @@ import { GoogleMap,
 const Response = require('../../server/Response.js');
 
 import { Heading } from '@chakra-ui/react';
+import Tiles from './Tiles.jsx';
 
 
-// const libraries = ['places'];
+const libraries = ['places'];
+// const mapContainerStyle = {
+//   width: '100vw',
+//   height: '100vh'
+// };
+
 const mapContainerStyle = {
-  width: '100vw',
-  height: '100vh'
+  width: '50%',
+
 };
+
 
 const center = {
   lat: 37.79160,
@@ -20,7 +27,7 @@ const center = {
 };
 
 
-const MapContainer = ({markers, addMarkers, selected, setSelected}) => {
+const MapContainer = ({markers, addMarkers, selected, setSelected, tileProps}) => {
 
 
   const handleMapClick = (event) => {
@@ -31,8 +38,12 @@ const MapContainer = ({markers, addMarkers, selected, setSelected}) => {
   };
 
   return (
+  <>
+    <Heading id="tile-banner" as="h3" >
+      My spots:
+    </Heading>
+    <hr/>
     <div id="map-container">
-
 
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
@@ -74,7 +85,11 @@ const MapContainer = ({markers, addMarkers, selected, setSelected}) => {
           }
 
       </GoogleMap>
-    </div>);
+
+      <Tiles tileProps={tileProps}/>
+    </div>
+    </>
+    );
 };
 
 
