@@ -34,6 +34,7 @@ const Tiles = (props) => {
         ))}
 
       </div>
+    <div id="extra-space"></div>
 </div>
 
 
