@@ -73,7 +73,7 @@ const MapContainer = ({markers, addMarkers, selected, setSelected}) => {
               }}
 
             >
-              <div>
+              <div className="info-window">
                 {selected.name}
               </div>
             </InfoWindow>)

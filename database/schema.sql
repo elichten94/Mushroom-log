@@ -52,10 +52,10 @@ INSERT INTO places (name, lat, lng)
 
 INSERT INTO species (name)
   VALUES
-    ('diminutive morels'),
-    ('jack in the pulpit'),
-    ('ramps'),
-    ('wild garlic');
+    ('Woodchip morels'),
+    ('Wild artichoke'),
+    ('Nodding onions'),
+    ('Canadian garlic');
 
 INSERT INTO places_species
   VALUES
