@@ -10,15 +10,15 @@ import Tiles from './Tiles.jsx';
 
 
 const libraries = ['places'];
-// const mapContainerStyle = {
-//   width: '100vw',
-//   height: '100vh'
-// };
-
 const mapContainerStyle = {
-  width: '50%',
-
+  width: '100vw',
+  height: '100vh'
 };
+
+// const mapContainerStyle = {
+//   width: '50%',
+
+// };
 
 
 const center = {
@@ -27,7 +27,7 @@ const center = {
 };
 
 
-const MapContainer = ({markers, addMarkers, selected, setSelected, tileProps}) => {
+const MapContainer = ({markers, addMarkers, selected, setSelected}) => {
 
 
   const handleMapClick = (event) => {
@@ -39,10 +39,7 @@ const MapContainer = ({markers, addMarkers, selected, setSelected, tileProps}) =
 
   return (
   <>
-    <Heading id="tile-banner" as="h3" >
-      My spots:
-    </Heading>
-    <hr/>
+
     <div id="map-container">
 
       <GoogleMap
@@ -86,7 +83,7 @@ const MapContainer = ({markers, addMarkers, selected, setSelected, tileProps}) =
 
       </GoogleMap>
 
-      <Tiles tileProps={tileProps}/>
+
     </div>
     </>
     );

@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from './components/Header.jsx';
 import MapContainer from './components/MapContainer.jsx';
-// import Tiles from './components/Tiles.jsx';
+import Tiles from './components/Tiles.jsx';
 import './style.scss';
 import request from './request.js';
 const Response = require('../server/Response.js');
@@ -94,9 +94,9 @@ class App extends React.Component {
           setSelected={this.setSelected}
           selected={this.state.selected}
           tileProps={tileProps}/>
-        />
+
         {/* render all markers into tiles */}
-        {/* <Tiles tileProps={tileProps}/> */}
+        <Tiles tileProps={tileProps}/>
       </div>
     );
 

@@ -12,7 +12,10 @@ import { Flex, Spacer, Heading } from '@chakra-ui/react';
 const Tiles = (props) => {
   return (
 <div id="lower-block">
-
+    <Heading id="tile-banner" as="h3" >
+      My spots:
+    </Heading>
+    <hr/>
     <div id="tiles">
 
 
