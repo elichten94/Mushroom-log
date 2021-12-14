@@ -1,4 +1,9 @@
 
+// #main-block {
+//   padding: 0 5%;
+//   background-image: url('background.jpg');
+//   background-size: auto 100%;
+// }
 
 
 #top-block {
@@ -36,6 +41,9 @@
 #map-container {
   display: flex;
   justify-content: space-between;
+  padding: 0 8%;
+  background-image: url('background.jpg');
+  background-size: auto 100%;
 }
 
 #lower-block {
@@ -61,7 +69,7 @@
 
 
 
-.tile {
+.selected-tile, .tile {
   border: 1px solid black;
   padding: 1.4em;
 
@@ -78,13 +86,16 @@
 
 }
 
+.selected-tile {
+  border: 3px solid lightblue;
+}
+
 .add-species-form, .add-place-form {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   margin: 0.5em
 }
-
 
 .species-entry {
   display: flex;

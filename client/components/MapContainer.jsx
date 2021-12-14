@@ -11,8 +11,8 @@ import Tiles from './Tiles.jsx';
 
 const libraries = ['places'];
 const mapContainerStyle = {
-  width: '100vw',
-  height: '100vh'
+  width: '100%',
+  height: '70vh'
 };
 
 // const mapContainerStyle = {

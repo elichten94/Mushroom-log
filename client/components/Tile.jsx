@@ -26,6 +26,7 @@ import {
  */
 const Tile = (props) => {
 
+  console.log('PROPS::', props);
   var s_index = props.selected === null ? -1 : props.selected._index;
 
   var [tile, setTile] = React.useState({
@@ -35,9 +36,16 @@ const Tile = (props) => {
     species: props.marker.species,
     coordinates: props.marker.coordinates,
     name: props.marker.name.length ? props.marker.name : '',
-    selected: props.marker._index === s_index,
+    selected: s_index === props.marker._index,
     input_id: props.input_id
   });
+
+  React.useEffect(() => {
+    setTile({
+      ...tile,
+      selected: !tile.selected
+    })
+  }, [s_index]);
 
   var [formView, setFormView] = React.useState(Boolean(!props.marker.name));
 
@@ -47,6 +55,8 @@ const Tile = (props) => {
       placeText: event.target.value
     });
   };
+
+  console.log('selected? ', tile.selected)
 
   const updateSpecies = (event) => {
     setTile({
@@ -116,10 +126,13 @@ const Tile = (props) => {
     });
   };
 
+  // later change to selected-tile
+  var classNames = tile.selected ? 'tile' : 'tile';
+
   if (formView) {
     // return a prompt for location
     return (
-      <div className="tile">
+      <div className={classNames}>
         <FormControl className='add-place-form'>
           <Input type='text' className="tile-input" onChange={updatePlace} placeholder='Describe the place' />
           <Button className="form-button" colorScheme='blue' onClick={addPlace} size="md">Add </Button>
@@ -131,7 +144,7 @@ const Tile = (props) => {
     var placeHeading = tile.placeText.length ? tile.placeText : props.marker.name;
     return (
 
-          <div className="tile">
+          <div className={classNames}>
             <Heading className="place"  as="h3" size="md">
               {placeHeading}
             </Heading>

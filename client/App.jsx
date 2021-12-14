@@ -88,6 +88,7 @@ class App extends React.Component {
 
     return (
       <div id="main-block">
+        <div id="blur-filter">
         <Header />
         <MapContainer markers={this.state.markers}
           addMarkers={this.addMarkers}
@@ -97,6 +98,7 @@ class App extends React.Component {
 
         {/* render all markers into tiles */}
         <Tiles tileProps={tileProps}/>
+        </div>
       </div>
     );
 
