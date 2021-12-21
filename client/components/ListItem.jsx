@@ -26,7 +26,6 @@ const ListItem = ({ speciesObj, place, fetchAndRerender, submitDescription }) =>
         <></>}
     </>
   );
-
-}
+};
 
 export default ListItem;
