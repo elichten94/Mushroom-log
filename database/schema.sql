@@ -2,14 +2,6 @@ DROP DATABASE IF EXISTS mushroom_log;
 CREATE DATABASE mushroom_log;
 USE mushroom_log;
 
-
--- CREATE TABLE types (
---   id INT NOT NULL AUTO_INCREMENT,
---   `name` VARCHAR(20) UNIQUE NOT NULL,
-
---   PRIMARY KEY(id)
--- );
-
 CREATE TABLE places (
   id INT NOT NULL AUTO_INCREMENT,
  `name` VARCHAR(100) NOT NULL,
@@ -22,7 +14,6 @@ CREATE TABLE places (
 CREATE TABLE species (
   id INT NOT NULL AUTO_INCREMENT,
  `name` VARCHAR(50) NOT NULL,
- -- techdebt: use a `type` field for animal, plant etc;
 
   PRIMARY KEY(id)
 );
@@ -37,4 +28,3 @@ CREATE TABLE places_species (
   FOREIGN KEY(species_id)
     REFERENCES species(id)
 );
-

@@ -15,20 +15,12 @@ const mapContainerStyle = {
   height: '70vh'
 };
 
-// const mapContainerStyle = {
-//   width: '50%',
-
-// };
-
-
 const center = {
   lat: 37.79160,
   lng: -122.46700
 };
 
-
 const MapContainer = ({markers, addMarkers, selected, setSelected}) => {
-
 
   const handleMapClick = (event) => {
     var lat = event.latLng.lat();
@@ -38,10 +30,7 @@ const MapContainer = ({markers, addMarkers, selected, setSelected}) => {
   };
 
   return (
-  <>
-
     <div id="map-container">
-
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
         zoom={8}
@@ -54,8 +43,6 @@ const MapContainer = ({markers, addMarkers, selected, setSelected}) => {
             icon={{
               url: 'https://upload.wikimedia.org/wikipedia/commons/f/f7/Mushroom.svg',
               scaledSize: new window.google.maps.Size(50, 50),
-              // origin: new window.google.maps.Size(0, 0),
-              // anchor: new window.google.maps.Size(25, 25),
             }}
             onClick={() => {
               setSelected(marker);
@@ -64,7 +51,8 @@ const MapContainer = ({markers, addMarkers, selected, setSelected}) => {
           ))}
 
           {
-            selected ? (<InfoWindow position={{
+            selected ?
+            (<InfoWindow position={{
               lat: selected.coordinates.lat,
               lng: selected.coordinates.lng
               }}
@@ -82,11 +70,8 @@ const MapContainer = ({markers, addMarkers, selected, setSelected}) => {
           }
 
       </GoogleMap>
-
-
     </div>
-    </>
-    );
+  );
 };
 
 

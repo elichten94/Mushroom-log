@@ -7,24 +7,24 @@ const ListItem = ({ speciesObj, place, fetchAndRerender, submitDescription }) =>
     setOpen(!open);
   }
 
-  // speciesObj = speciesObj ? speciesObj : '';
-
-  // console.log('speciesObj and place:', speciesObj, place);
   return (
-  <>
-    <div className="species-entry">
-      <span className="species">{speciesObj.species}</span>
-      {speciesObj.species.length ? <span className="toggle-inset" onClick={toggleInset}>{'+'}</span> : <></>}
+    <>
+      <div className="species-entry">
+        <span className="species">{speciesObj.species}</span>
+        {speciesObj.species.length ? <span className="toggle-inset" onClick={toggleInset}>{'+'}</span> : <></>}
 
-    </div>
-    {open ? <Inset
-              speciesName={speciesObj.species}
-              place={place}
-              insetText={speciesObj.description}
-              fetchAndRerender={fetchAndRerender}
-              submitDescription={submitDescription}
-              /> : <></>}
-  </>
+      </div>
+      {open ?
+       <Inset
+          speciesName={speciesObj.species}
+          place={place}
+          insetText={speciesObj.description}
+          fetchAndRerender={fetchAndRerender}
+          submitDescription={submitDescription}
+          />
+        :
+        <></>}
+    </>
   );
 
 }
