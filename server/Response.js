@@ -1,4 +1,4 @@
-var Response = function(og) {
+const Response = function(og) {
   this.name = og.place || '';
   this.species = og.species || [];
   this.coordinates = {
