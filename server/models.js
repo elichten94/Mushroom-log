@@ -23,6 +23,7 @@ module.exports = {
     var sqlQuery = `
       INSERT INTO places (name, lat, lng)
         VALUES (?, ?, ?)`;
+
     return pool.query(sqlQuery, [place, lat, lng]);
   },
 
