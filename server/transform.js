@@ -1,4 +1,5 @@
 const Response = require('./Response.js');
+
 const transform = {
   shapeData: function(queryRows) {
     var length = queryRows.length;
@@ -14,7 +15,6 @@ const transform = {
         next = queryRows[b + 1].place;
       }
 
-
       if ((next !== current || next === undefined) && a !== b) {
         groups.push(queryRows.slice(a, b + 1))
         b++;
@@ -23,7 +23,7 @@ const transform = {
         if (current === next) {
           b++;
         } else {
-          groups.push(queryRows[b]);
+          groups.push([queryRows[b]]);
           a++;
           b++;
         }
@@ -35,27 +35,18 @@ const transform = {
     }
 
     return transform.format(groups);
-
   },
 
   format: function(groupedData) {
     var formatted = [];
-    // grouped array (an array ob mixed obj and arrays)
-
     var species;
     for (item of groupedData) {
-      // if an array,
-      if (Array.isArray(item)) {
-        // it's a group
-        // compile all species
-        aggSpecies = item.map(obj => obj.species);
-        item[0].species = aggSpecies;
-        formatted.push(new Response(item[0]));
-      } else {
-        formatted.push(new Response(item));
-      }
+      aggSpecies = item.map(obj => (
+        {species: obj.species, description: obj.description}
+      ));
+      item[0].species = aggSpecies;
+      formatted.push(new Response(item[0]));
     }
-    // out: formatted response
     return formatted;
   }
 };

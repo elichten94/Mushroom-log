@@ -1,27 +1,44 @@
-
 #top-block {
-  margin: 0.5em;
+  padding: 0.5em;
   display: flex;
   flex-direction: column;
   align-content: center;
+  background-color: #08e1ae;
+  background-image: linear-gradient(315deg, #08e1ae 0%, #a1da70 74%);
 }
 
-#map-banner, #title {
+#map-banner, #title, #tile-banner {
   text-align: center;
+  text-shadow: 1px 1px 1px;
   color: brown;
   font-family: "Comic Sans MS", cursive, sans-serif;
-  margin: 20px;
+  padding: 30px;
 }
 
 #title {
-  color: darkgoldenrod;
-  text-shadow: 1px 1px 1px;
+  color: darkgreen;
 }
 
+#tile-banner {
+  color: rgba(0, 0, 0, 0.548)
+}
 
 #header-img {
   display: block;
   height: 100px;
+}
+
+#map-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10%;
+  background-image: url('./assets/background.jpg');
+  background-size: auto 100%;
+}
+
+#lower-block {
+  background-color: #08e1ae;
+  background-image: linear-gradient(225deg, #08e1ae 0%, #a1da70 74%);
 }
 
 #tiles {
@@ -32,26 +49,27 @@
   font-family: "Comic Sans MS", cursive, sans-serif;
 }
 
-#tile-banner {
-  text-align: center;
-  margin: 20px;
+.info-window {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-size: 16pt;
+  padding: 0.5em;
 }
 
-.tile {
+.selected-tile, .tile {
   border: 1px solid black;
-  padding: 1em;
-
+  padding: 1.4em;
   margin: 20px;
-  border-radius: 8px;
+  border-radius: 20px;
   box-shadow: 4px 3px 4px;
-
   background: rgb(232,245,237);
   background: -moz-linear-gradient(180deg, rgba(232,245,237,1) 0%, rgba(249,238,195,1) 100%);
   background: -webkit-linear-gradient(180deg, rgba(232,245,237,1) 0%, rgba(249,238,195,1) 100%);
   background: linear-gradient(180deg, rgba(232,245,237,1) 0%, rgba(249,238,195,1) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#e8f5ed",endColorstr="#f9eec3",GradientType=1);
+}
 
-
+.selected-tile {
+  border: 3px solid lightblue;
 }
 
 .add-species-form, .add-place-form {
@@ -64,4 +82,23 @@
 .species-entry {
   display: flex;
   justify-content: space-between;
+}
+
+.toggle-inset {
+  font-size: 20pt;
+}
+
+.observation-inset {
+  margin: 0.5em;
+  padding: 1em;
+  width: 300px;
+  background-color: rgb(253, 204, 113);
+  border: 1px solid black;
+  border-radius: 8px;
+  box-shadow: 1px 1px 1px;
+}
+
+
+#extra-space {
+  height: 200px;
 }

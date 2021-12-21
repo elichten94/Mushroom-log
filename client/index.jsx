@@ -4,13 +4,12 @@ import App from './App.jsx';
 import API_KEY from '../googleConfig.js';
 import { ChakraProvider } from '@chakra-ui/react';
 const libraries = ['places'];
-
 import { useLoadScript } from '@react-google-maps/api';
 
 const Root = () => {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: API_KEY,
-    libraries
+    libraries: libraries
   });
 
   if (loadError) {
@@ -22,16 +21,9 @@ const Root = () => {
       <ChakraProvider>
         <App />
       </ChakraProvider>
-
     );
   }
 
 }
 
 ReactDOM.render(<Root />, document.getElementById('app'));
-
-
-
-
-
-

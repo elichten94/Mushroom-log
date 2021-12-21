@@ -8,4 +8,3 @@ module.exports = mysql.createPool({
   database: 'mushroom_log',
   multipleStatements: true
 }).promise();
-

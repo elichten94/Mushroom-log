@@ -6,47 +6,57 @@ import {
 } from '@chakra-ui/react';
 import { TextField } from '@material-ui/core';
 
-
-
-
-const Inset = ({ speciesName, place, inset }) => {
-  // should allow the user to save info on their overservation (techdebt: add photo upload)
-
-  // if an inset exists for this observation we render the text view, otherwise an edit form
-  // switching to edit should retain the current text
-
-  handleInsetAdd = (event) => {
-
-  };
-
-  var [insetMode, setInsetMode] = React.useState({
-    editMode: !Boolean(inset),
-    text: inset || ''
+const Inset = ({ speciesName, place, insetText, fetchAndRerender, submitDescription }) => {
+  var [insetState, setInsetState] = React.useState({
+    editText: '',
+    displayText: insetText,
+    editMode: Boolean(!(insetText.length))
   });
 
-  if (insetMode.editMode) {
-    // render edit mode
-  return (
+  const handleInsetAdd = (event) => {
+    if (insetState.editText.length) {
+      submitDescription(speciesName, place, insetState.editText)
+        .then(() => {
+          setInsetState({
+            ...insetState,
+            displayText: insetState.editText,
+            editMode: !insetState.editMode
+          });
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    }
+  };
 
+  const handleEdit = (event) => {
+    setInsetState({
+      ...insetState,
+      editText: event.target.value
+    });
+  };
+
+  if (insetState.editMode) {
+  return (
     <div>
-      <FormControl id='email'>
-        <TextField
+      <FormControl>
+        <textarea
+          onChange={handleEdit}
           className="observations"
           label="Observations"
           margin="normal"
-        />
+        ></textarea>
         <Button onClick={handleInsetAdd}>
           Add
         </Button>
-
       </FormControl>
     </div>
     );
   } else {
-    // render a parapraph
-
+    return (
+      <p className="observation-inset">{insetState.displayText}</p>
+    );
   }
-
 };
 
 export default Inset;
