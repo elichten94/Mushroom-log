@@ -25,7 +25,8 @@ const Inset = ({ speciesName, place, insetText, fetchAndRerender, submitDescript
           });
         })
         .catch((err) => {
-          console.error('error adding description or updating app', err);
+          console.log('error adding description or updating app');
+          throw err;
         });
     }
   };
@@ -39,6 +40,7 @@ const Inset = ({ speciesName, place, insetText, fetchAndRerender, submitDescript
 
   if (insetState.editMode) {
   return (
+
     <div>
       <FormControl>
         <textarea
@@ -54,6 +56,7 @@ const Inset = ({ speciesName, place, insetText, fetchAndRerender, submitDescript
     </div>
     );
   } else {
+    console.log('the edit mode:', insetState.editMode);
     return (
       <p className="observation-inset">{insetState.displayText}</p>
     );

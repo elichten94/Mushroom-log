@@ -1,6 +1,8 @@
 import React from 'react';
 import ListItem from './ListItem.jsx';
 
+
+//EXPECTED PROPS: species (array of strings)
 const SpeciesList = (props) => {
   return (
     <div id="species-list">
@@ -13,7 +15,7 @@ const SpeciesList = (props) => {
           />
       ))}
     </div>
-  );
-};
+  )
+}
 
 export default SpeciesList;
