@@ -7,7 +7,6 @@ import {
 import { TextField } from '@material-ui/core';
 
 const Inset = ({ speciesName, place, insetText, fetchAndRerender, submitDescription }) => {
-
   var [insetState, setInsetState] = React.useState({
     editText: '',
     displayText: insetText,
@@ -25,8 +24,7 @@ const Inset = ({ speciesName, place, insetText, fetchAndRerender, submitDescript
           });
         })
         .catch((err) => {
-          console.log('error adding description or updating app');
-          throw err;
+          console.error(err);
         });
     }
   };
@@ -36,11 +34,10 @@ const Inset = ({ speciesName, place, insetText, fetchAndRerender, submitDescript
       ...insetState,
       editText: event.target.value
     });
-  }
+  };
 
   if (insetState.editMode) {
   return (
-
     <div>
       <FormControl>
         <textarea
@@ -56,12 +53,10 @@ const Inset = ({ speciesName, place, insetText, fetchAndRerender, submitDescript
     </div>
     );
   } else {
-    console.log('the edit mode:', insetState.editMode);
     return (
       <p className="observation-inset">{insetState.displayText}</p>
     );
   }
-
 };
 
 export default Inset;

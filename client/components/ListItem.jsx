@@ -5,7 +5,7 @@ const ListItem = ({ speciesObj, place, fetchAndRerender, submitDescription }) =>
   var [open, setOpen] = React.useState(false);
   const toggleInset = (event) => {
     setOpen(!open);
-  }
+  };
 
   return (
     <>
@@ -26,7 +26,6 @@ const ListItem = ({ speciesObj, place, fetchAndRerender, submitDescription }) =>
         <></>}
     </>
   );
-
-}
+};
 
 export default ListItem;

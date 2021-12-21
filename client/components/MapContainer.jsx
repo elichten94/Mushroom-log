@@ -3,12 +3,9 @@ import { GoogleMap,
   Marker,
   InfoWindow
 } from '@react-google-maps/api';
-const Response = require('../../server/Response.js');
-
 import { Heading } from '@chakra-ui/react';
 import Tiles from './Tiles.jsx';
-
-
+const Response = require('../../server/Response.js');
 const libraries = ['places'];
 const mapContainerStyle = {
   width: '100%',
@@ -21,11 +18,9 @@ const center = {
 };
 
 const MapContainer = ({markers, addMarkers, selected, setSelected}) => {
-
   const handleMapClick = (event) => {
     var lat = event.latLng.lat();
     var lng = event.latLng.lng();
-
     addMarkers(new Response({lat: lat, lng: lng}));
   };
 
@@ -59,7 +54,6 @@ const MapContainer = ({markers, addMarkers, selected, setSelected}) => {
               onCloseClick={() => {
                 setSelected(null);
               }}
-
             >
               <div className="info-window">
                 {selected.name}
@@ -68,12 +62,9 @@ const MapContainer = ({markers, addMarkers, selected, setSelected}) => {
             :
             <></>
           }
-
       </GoogleMap>
     </div>
   );
 };
-
-
 
 export default MapContainer;
