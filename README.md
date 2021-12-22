@@ -10,6 +10,6 @@ If you're into foraging wild plants or fungi, you probably discover new spots ev
 - Database: mySQL
 
 ###  :white_check_mark: &nbsp; Current version:
-As of right now, users are able to log and save entries and return to find them. We're iterating upon our product to continue delivering the best positive user expereince.
+As of right now, users are able to log and save entries and return to find them. We're iterating to continue delivering the best positive user expereince.
 
 Feedback is always appreciated. Please add any experienced bugs to the "Issues" tab with relevant context and how to reproduce the behavior.
