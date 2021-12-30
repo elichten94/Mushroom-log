@@ -10,10 +10,10 @@ If you're into foraging wild plants or fungi, you probably discover new spots ev
 - Database: mySQL
 
 ###  :white_check_mark: &nbsp; Current version:
-1. Click anywhere on the map to add an entry.
+1. Click anywhere on the map to add an entry
 2. Add a description about the place
-3. Start entering the species you found!
-4. Add a note about the find - was it near the creek? By the trail head? Bring tougher jeans next time?
+3. Start entering the species you found
+4. Add a note about the find - was it near the creek? By the trail head? Too much poison ivy?
 ...and repeat!
 
 Feedback is always appreciated. Please add any experienced bugs to the "Issues" tab with relevant context and how to reproduce the behavior.
