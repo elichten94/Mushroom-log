@@ -19,14 +19,22 @@ Create `googleConfig.js` in the root directory and copy in the contents of `goog
 Please ensure that `.env` and `googleConfig.js` are both gitignored. <br />
 
 Run the following commands from the root directory:
-```npm install```
+```shell
+npm install
+```
 to install all necessary dependencies
-```mysql -u <username> -p <password> < database/schema.sql```
+```shell
+mysql -u <username> -p <password> < database/schema.sql
+```
 to seed the database schema
-```npm run build```
+```shell
+npm run build
+```
 to compile the React app and re-compile on save. <br />
 Ensure the mysql server on your machine is running and then
-```npm start```
+```shell
+npm start
+```
 in a separate terminal window to start the node server.
 
 ###  :white_check_mark: &nbsp; Current version:
