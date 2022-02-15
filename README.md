@@ -9,7 +9,7 @@ If you're into foraging wild plants or fungi, you probably discover new spots ev
 - Server: Node/Express
 - Database: MySQL
 
-### Requirements and setup:
+### 💻 Requirements and setup:
 - Node.js ≥ v14
 - MySQL ≥ v5.7
 
