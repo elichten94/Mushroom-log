@@ -20,20 +20,20 @@ Please ensure that `.env` and `googleConfig.js` are both gitignored. <br />
 
 Run the following commands from the root directory:
 ```shell
-npm install
+$ npm install
 ```
 to install all necessary dependencies
 ```shell
-mysql -u <username> -p <password> < database/schema.sql
+$ mysql -u <username> -p <password> < database/schema.sql
 ```
 to seed the database schema
 ```shell
-npm run build
+$ npm run build
 ```
 to compile the React app and re-compile on save. <br />
 Ensure the mysql server on your machine is running and then
-```shell
-npm start
+```console
+$ npm start
 ```
 in a separate terminal window to start the node server.
 
@@ -42,6 +42,6 @@ in a separate terminal window to start the node server.
 2. Add a description about the place
 3. Start entering the species you found
 4. Add a note about the find - was it near the creek or trail head? Too much poison ivy? <br />
-...and repeat!
+...and repeat! <br/ >
 
 Feedback is always appreciated. Please add any experienced bugs to the "Issues" tab with relevant context and how to reproduce the behavior.
