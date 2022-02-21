@@ -9,7 +9,7 @@ If you're into foraging wild plants or fungi, you probably discover new spots ev
 - Server: Node/Express
 - Database: MySQL
 
-### Requirements and setup:
+### :computer: &nbsp; Requirements and setup:
 - Node.js ≥ v14
 - MySQL ≥ v5.7
 
@@ -19,21 +19,34 @@ Create `googleConfig.js` in the root directory and copy in the contents of `goog
 Please ensure that `.env` and `googleConfig.js` are both gitignored. <br />
 
 Run the following commands from the root directory:
-```npm install```
+```shell
+$ npm install
+```
 to install all necessary dependencies
-```mysql -u <username> -p <password> < database/schema.sql```
+```shell
+$ mysql -u <username> -p <password> < database/schema.sql
+```
 to seed the database schema
-```npm run build```
+```shell
+$ npm run build
+```
 to compile the React app and re-compile on save. <br />
 Ensure the mysql server on your machine is running and then
-```npm start```
+```console
+$ npm start
+```
 in a separate terminal window to start the node server.
 
 ###  :white_check_mark: &nbsp; Current version:
 1. Click anywhere on the map to add an entry
 2. Add a description about the place
 3. Start entering the species you found
+<<<<<<< HEAD
 4. Add a note about the find - was it near the creek or trail head? Too much poison ivy?
 ...and repeat!
+=======
+4. Add a note about the find - was it near the creek or trail head? Too much poison ivy? <br />
+...and repeat! <br/ >
+>>>>>>> 0f1ddf7a1c90293dee4f7085a7bd6702916e559e
 
 Feedback is always appreciated. Please add any experienced bugs to the "Issues" tab with relevant context and how to reproduce the behavior.
