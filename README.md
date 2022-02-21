@@ -13,7 +13,7 @@ If you're into foraging wild plants or fungi, you probably discover new spots ev
 - Node.js ≥ v14
 - MySQL ≥ v5.7
 
-After forking and cloning down the repo, create a `.env` file in the root directory with the same keys listed in `dotenv.example` <br />
+After forking and cloning down the repo, create a `.env` file in the root directory with the same keys listed in `dotenv.example.txt` <br />
 
 Create `googleConfig.js` in the root directory and copy in the contents of `googleConfig.example.js`. Add your Google Maps API key. <br />
 Please ensure that `.env` and `googleConfig.js` are both gitignored. <br />
@@ -33,7 +33,7 @@ in a separate terminal window to start the node server.
 1. Click anywhere on the map to add an entry
 2. Add a description about the place
 3. Start entering the species you found
-4. Add a note about the find - was it near the creek or trail head? Too much poison ivy? <br />
+4. Add a note about the find - was it near the creek or trail head? Too much poison ivy?
 ...and repeat!
 
 Feedback is always appreciated. Please add any experienced bugs to the "Issues" tab with relevant context and how to reproduce the behavior.
