@@ -15,19 +15,19 @@ Create `googleConfig.js` and copy in the contents of `googleConfig.example.js`. 
 
 To run the app locally, exexcute the following from the project's root directory:
 1. Install all necessary dependencies:
-```shell
-$ npm install
-```
+    ```shell
+    $ npm install
+    ```
 2. Seed the database schema:
-```shell
-$ mysql -u <username> -p <password> < database/schema.sql
-```
+    ```shell
+    $ mysql -u <username> -p <password> < database/schema.sql
+    ```
 3. Start the Node server:
-```console
-$ npm start
-```
+    ```console
+    $ npm start
+    ```
 4. Build the React app:
-```shell
-$ npm run build
-```
+    ```shell
+    $ npm run build
+    ```
 5. Open your web browser to `http://localhost:3000`
