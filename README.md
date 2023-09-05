@@ -13,7 +13,7 @@ After forking and cloning down the repo, create a `.env` file in the project's r
 Create `googleConfig.js` and copy in the contents of `googleConfig.example.js`. Add your Google Maps API key. <br />
 **Do not commit `.env` or `googleConfig.js` to version control.** <br />
 
-To run the app locally, exexcute the following from the project's root directory:
+To run the app locally, execute the following from the project's root directory:
 1. Install all necessary dependencies:
     ```shell
     $ npm install
